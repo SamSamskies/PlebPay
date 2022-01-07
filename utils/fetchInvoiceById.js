@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const createQuote = (invoiceId) => {
+const fetchInvoiceById = (invoiceId) => {
   return axios({
-    method: "post",
-    url: "/api/quotes/create",
-    data: { invoiceId },
+    method: "get",
+    url: `/api/invoices/${invoiceId}`,
   })
     .then(({ data }) => data)
     .catch((error) => {
@@ -12,4 +11,4 @@ const createQuote = (invoiceId) => {
     });
 };
 
-export default createQuote;
+export default fetchInvoiceById;

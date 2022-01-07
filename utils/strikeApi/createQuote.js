@@ -10,7 +10,7 @@ const createQuote = (invoiceId) => {
       Authorization: `Bearer ${process.env.STRIKE_API_KEY}`,
     },
   })
-    .then(({ data }) => data)
+    .then(({ data }) => ({ invoiceId, ...data }))
     .catch((error) => {
       console.log(error);
     });

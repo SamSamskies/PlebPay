@@ -1,10 +1,10 @@
 import createInvoice from "../../../utils/strikeApi/createInvoice";
 import createQuote from "../../../utils/strikeApi/createQuote";
-import fetchInvoiceId from "../../../utils/strikeApi/fetchInvoiceId";
+import fetchInvoiceById from "../../../utils/strikeApi/fetchInvoiceById";
 import fetchUserById from "../../../utils/strikeApi/fetchUserById";
 
 export default async function handler(req, res) {
-  const existingInvoice = await fetchInvoiceId(req.body.invoiceId);
+  const existingInvoice = await fetchInvoiceById(req.body.invoiceId);
   const { amount, description, receiverId } = existingInvoice;
   const { title } = JSON.parse(description);
   const { handle } = await fetchUserById(receiverId);

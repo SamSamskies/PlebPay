@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const fetchInvoiceId = (invoiceId) => {
+const fetchInvoiceById = (invoiceId) => {
   return axios({
     method: "get",
     url: `https://api.strike.me/v1/invoices/${invoiceId}`,
@@ -15,4 +15,4 @@ const fetchInvoiceId = (invoiceId) => {
     });
 };
 
-export default fetchInvoiceId;
+export default fetchInvoiceById;

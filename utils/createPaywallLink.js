@@ -3,7 +3,7 @@ import axios from "axios";
 const createPaywallLink = (data) => {
   return axios({
     method: "post",
-    url: "/api/paywallLink/create",
+    url: "/api/paywallLinks/create",
     data,
   })
     .then(({ data }) => data)
