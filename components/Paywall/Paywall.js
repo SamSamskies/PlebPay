@@ -39,6 +39,12 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
     }
   }, [redirectUrl]);
 
+  useEffect(() => {
+    if (quote) {
+      setTimeout(() => setQuote(null), quote.expirationInSec * 1000);
+    }
+  }, [quote]);
+
   return (
     <div>
       <h1>{redirectUrl ? `You're in.` : title}</h1>
