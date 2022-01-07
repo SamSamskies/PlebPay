@@ -1,4 +1,4 @@
-import CreateInvoice from "../../components/CreateInvoice";
+import CreatePaywallLink from "../../components/CreatePaywallLink";
 import fetchUser from "../../utils/fetchUser";
 
 export async function getServerSideProps({ query }) {
@@ -7,4 +7,4 @@ export async function getServerSideProps({ query }) {
   return { props: data ?? {} };
 }
 
-export default CreateInvoice;
+export default CreatePaywallLink;

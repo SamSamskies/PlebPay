@@ -1,11 +1,25 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Button from "../Button";
+import createPaywallLink from "../../utils/createPaywallLink";
 
-export default function CreateInvoice({ avatarUrl }) {
+export default function CreatePaywallLink({ avatarUrl, currencies }) {
   const { query, isReady } = useRouter();
-  const handleSubmit = (e) => {
+  const [paywallLink, setPaywallLink] = useState();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const paywallLink = await createPaywallLink({
+      username: query.username,
+      title: e.target.title.value,
+      currency: currencies.find(({ isDefaultCurrency }) => isDefaultCurrency)
+        ?.currency,
+      amount: e.target.amount.value,
+      redirectUrl: e.target.redirectUrl.value,
+    });
+
+    setPaywallLink(paywallLink);
   };
 
   return isReady ? (
@@ -41,6 +55,13 @@ export default function CreateInvoice({ avatarUrl }) {
         <br />
         <Button>Submit</Button>
       </form>
+      <br />
+      {paywallLink && (
+        <div>
+          <h2>Paywall Link Created 🎉</h2>
+          <p>{paywallLink}</p>
+        </div>
+      )}
     </div>
   ) : null;
 }
