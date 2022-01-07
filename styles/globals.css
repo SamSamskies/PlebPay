@@ -5,6 +5,7 @@ body {
   font-family: Futura, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: black;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 a {
@@ -14,10 +15,6 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-p {
-  color: rgba(255, 255, 255, 0.6);
 }
 
 h1,

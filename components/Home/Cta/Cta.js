@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import Button from "../../Button";
-import styles from "./Cta.module.css";
 
 export default function Cta() {
   const { query, isReady } = useRouter();
@@ -17,7 +16,7 @@ export default function Cta() {
   };
 
   return isReady ? (
-    <div className={styles.ctaContainer}>
+    <div>
       <h1>{title}</h1>
       <Button onClick={handleClick}>Enter for {displayAmount}</Button>
     </div>
