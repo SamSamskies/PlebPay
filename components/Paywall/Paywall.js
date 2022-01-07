@@ -19,7 +19,7 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
     setQuote(await createQuote(invoiceId));
   };
 
-  const invoiceState = useInvoiceStatePoller(quote ? quote.invoiceId : null);
+  const invoiceState = useInvoiceStatePoller(quote?.invoiceId);
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
