@@ -1,5 +1,5 @@
 import CreatePaywallLink from "../../components/CreatePaywallLink";
-import fetchUser from "../../utils/fetchUser";
+import fetchUser from "../../utils/strikeApi/fetchUserByHandle";
 
 export async function getServerSideProps({ query }) {
   const data = await fetchUser(query.username);

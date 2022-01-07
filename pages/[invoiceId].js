@@ -1,5 +1,5 @@
 import Paywall from "../components/Paywall/Paywall";
-import fetchInvoiceId from "../utils/fetchInvoiceId";
+import fetchInvoiceId from "../utils/strikeApi/fetchInvoiceId";
 
 export async function getServerSideProps({ query }) {
   const data = await fetchInvoiceId(query.invoiceId);

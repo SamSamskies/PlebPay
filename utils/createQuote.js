@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const createPaywallLink = (data) => {
+const createQuote = (invoiceId) => {
   return axios({
     method: "post",
-    url: "/api/paywallLink/create",
-    data,
+    url: "/api/quote/create",
+    data: { invoiceId },
   })
     .then(({ data }) => data)
     .catch((error) => {
@@ -12,4 +12,4 @@ const createPaywallLink = (data) => {
     });
 };
 
-export default createPaywallLink;
+export default createQuote;

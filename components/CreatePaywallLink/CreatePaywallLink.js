@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../Button";
 import createPaywallLink from "../../utils/createPaywallLink";
 
@@ -59,7 +60,9 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
       {paywallLink && (
         <div>
           <h2>Paywall Link Created 🎉</h2>
-          <p>{paywallLink}</p>
+          <Link href={paywallLink}>
+            <a>{paywallLink}</a>
+          </Link>
         </div>
       )}
     </div>

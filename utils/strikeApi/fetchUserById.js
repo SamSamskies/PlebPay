@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const fetchUser = (username) => {
+const fetchUserById = (userId) => {
   return axios({
     method: "get",
-    url: `https://api.strike.me/v1/accounts/handle/${username}/profile`,
+    url: `https://api.strike.me/v1/accounts/${userId}/profile`,
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${process.env.STRIKE_API_KEY}`,
@@ -15,4 +15,4 @@ const fetchUser = (username) => {
     });
 };
 
-export default fetchUser;
+export default fetchUserById;
