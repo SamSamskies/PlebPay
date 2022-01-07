@@ -1,13 +1,9 @@
-import { useRouter } from "next/router";
 import Button from "../../Button";
 
-export default function Cta() {
-  const { query, isReady } = useRouter();
-  const title = query.title ?? "Untitled Paywall";
-  const amount = query.amount ?? 1;
+export default function Cta({ title, amount, currency, invoiceId }) {
   const displayAmount = new Intl.NumberFormat("en", {
     style: "currency",
-    currency: "USD",
+    currency,
   })
     .format(amount)
     .replace(/\.00$/, "");
@@ -15,10 +11,10 @@ export default function Cta() {
     window.alert("not implemented yet.");
   };
 
-  return isReady ? (
+  return (
     <div>
       <h1>{title}</h1>
       <Button onClick={handleClick}>Enter for {displayAmount}</Button>
     </div>
-  ) : null;
+  );
 }
