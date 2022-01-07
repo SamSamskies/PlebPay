@@ -1,5 +1,5 @@
-import CreateInvoice from "../components/CreateInvoice";
-import fetchUser from "../utils/fetchUser";
+import CreateInvoice from "../../components/CreateInvoice";
+import fetchUser from "../../utils/fetchUser";
 
 export async function getServerSideProps({ query }) {
   const data = await fetchUser(query.username);
