@@ -4,7 +4,7 @@ import { uuid } from "uuidv4";
 const createInvoice = ({ title, amount, currency, redirectUrl, username }) => {
   const data = {
     correlationId: uuid(),
-    description: JSON.stringify({ title, redirectUrl }),
+    description: redirectUrl ? JSON.stringify({ title, redirectUrl }) : title,
     amount: {
       currency,
       amount,
@@ -21,9 +21,7 @@ const createInvoice = ({ title, amount, currency, redirectUrl, username }) => {
     },
     data,
   })
-    .then(
-      ({ data }) => `${process.env.BASE_PAYWALL_LINK_URL}/${data.invoiceId}`
-    )
+    .then(({ data }) => data)
     .catch((error) => {
       console.log(error);
     });

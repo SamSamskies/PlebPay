@@ -1,5 +1,5 @@
-import createInvoice from "../../../utils/strikeApi/createInvoice";
+import createPaywallLink from "../../../utils/strikeApi/createPaywallLink";
 
 export default async function handler(req, res) {
-  res.status(200).json(await createInvoice(req.body));
+  res.status(200).json(await createPaywallLink(req.body));
 }
