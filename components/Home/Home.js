@@ -1,5 +1,3 @@
-import Cta from "./Cta";
-
-export default function Home(props) {
-  return <Cta />;
+export default function Home() {
+  return <h1>Strike Paywall</h1>;
 }
