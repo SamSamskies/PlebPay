@@ -1,3 +1,4 @@
+import Layout from "../components/Layout";
 import "../styles/globals.css";
 
 function SafeHydrate({ children }) {
@@ -11,7 +12,9 @@ function SafeHydrate({ children }) {
 function MyApp({ Component, pageProps }) {
   return (
     <SafeHydrate>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </SafeHydrate>
   );
 }
