@@ -8,8 +8,11 @@ import createPaywallLink from "../../utils/createPaywallLink";
 export default function CreatePaywallLink({ avatarUrl, currencies }) {
   const { query, isReady } = useRouter();
   const [paywallLink, setPaywallLink] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     const paywallLink = await createPaywallLink({
       username: query.username,
@@ -21,6 +24,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
     });
 
     setPaywallLink(paywallLink);
+    setIsLoading(false);
   };
 
   return isReady ? (
@@ -54,7 +58,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
           </label>
         </div>
         <br />
-        <Button>Submit</Button>
+        <Button isLoading={isLoading}>Submit</Button>
       </form>
       <br />
       {paywallLink && (

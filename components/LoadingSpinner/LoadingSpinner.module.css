@@ -1,0 +1,13 @@
+.root {
+  animation: button-loading-spinner 1s linear infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}

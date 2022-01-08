@@ -9,6 +9,7 @@ import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
 export default function Paywall({ title, amount, currency, invoiceId }) {
   const [quote, setQuote] = useState();
   const [redirectUrl, setRedirectUrl] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const displayAmount = new Intl.NumberFormat("en", {
     style: "currency",
     currency,
@@ -16,7 +17,9 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
     .format(amount)
     .replace(/\.00$/, "");
   const handleClick = async () => {
+    setIsLoading(true);
     setQuote(await createQuote(invoiceId));
+    setIsLoading(false);
   };
 
   const invoiceState = useInvoiceStatePoller(quote?.invoiceId);
@@ -55,7 +58,9 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
         </p>
       )}
       {!quote && (
-        <Button onClick={handleClick}>Enter for {displayAmount}</Button>
+        <Button onClick={handleClick} isLoading={isLoading}>
+          Enter for {displayAmount}
+        </Button>
       )}
       {quote && (
         <div className={styles.qrCodeContainer}>
