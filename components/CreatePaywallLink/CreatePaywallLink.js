@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button";
 import createPaywallLink from "../../utils/createPaywallLink";
+import styles from "./CreatePaywallLink.module.css";
 
 export default function CreatePaywallLink({ avatarUrl, currencies }) {
   const { query, isReady } = useRouter();
@@ -28,11 +29,11 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
   };
 
   return isReady ? (
-    <div>
+    <div className={styles.root}>
       {avatarUrl && (
         <Image src={avatarUrl} alt="user avatar" width="100%" height="100%" />
       )}
-      <h1>{query.username}</h1>
+      <h1 className={styles.h1}>{query.username}</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
@@ -40,25 +41,39 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
             <input
               type="number"
               name="amount"
+              min={0.01}
               step="0.01"
-              style={{ width: 64 }}
+              placeholder={1}
+              autoFocus
+              required
             />
           </label>
         </div>
         <br />
         <div>
           <label>
-            Title <input name="title" style={{ width: 400 }} />
+            Title{" "}
+            <input
+              name="title"
+              placeholder="Check out my new video!"
+              required
+            />
           </label>
         </div>
         <br />
         <div>
           <label>
-            Redirect URL <input name="redirectUrl" style={{ width: 400 }} />
+            Redirect URL{" "}
+            <input
+              name="redirectUrl"
+              placeholder="https://www.youtube.com/watch?v=wY55CdGx4H0"
+              required
+            />
           </label>
         </div>
-        <br />
-        <Button isLoading={isLoading}>Submit</Button>
+        <div className={styles.buttonContainer}>
+          <Button isLoading={isLoading}>Submit</Button>
+        </div>
       </form>
       <br />
       {paywallLink && (

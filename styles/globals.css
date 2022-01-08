@@ -35,6 +35,38 @@ p {
   margin: 0;
 }
 
+input {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  padding: 8px 16px;
+  appearance: none;
+  border: 1px solid transparent;
+  color: inherit;
+  line-height: 1.32;
+  font-weight: 700;
+  font-size: 19px;
+  border-radius: 10px;
+  background-color: rgb(28, 28, 30);
+  width: 100%;
+  cursor: text;
+  outline: none;
+  position: relative;
+  height: 56px;
+  text-align: left;
+  margin-top: 8px;
+}
+
+label {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  line-height: 1.32;
+  font-size: 19px;
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2em;
