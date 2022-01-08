@@ -6,13 +6,11 @@
 }
 
 .main > * {
-  max-width: 594px;
   margin: 0 6rem;
 }
 
 @media (max-width: 768px) {
   .main > * {
-    max-width: 263px;
     margin: 2rem;
   }
 }
