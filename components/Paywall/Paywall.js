@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import QRCode from "qrcode.react";
 import copy from "copy-to-clipboard";
@@ -27,20 +27,19 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
     setQuote(await createQuote(invoiceId));
     setIsLoading(false);
   };
-
   const invoiceState = useInvoiceStatePoller(quote?.invoiceId);
+  const handlePayment = useCallback(async () => {
+    const { description } = await fetchInvoiceById(invoiceId);
+
+    setRedirectUrl(JSON.parse(description).redirectUrl);
+    setQuote(null);
+  }, [invoiceId, setRedirectUrl]);
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
-      fetchInvoiceById(invoiceId)
-        .then(({ description }) => {
-          setRedirectUrl(JSON.parse(description).redirectUrl);
-        })
-        .finally(() => {
-          setQuote(null);
-        });
+      handlePayment();
     }
-  }, [invoiceState, invoiceId, setRedirectUrl]);
+  }, [invoiceState, handlePayment]);
 
   useEffect(() => {
     if (redirectUrl) {
@@ -49,10 +48,19 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
   }, [redirectUrl]);
 
   useEffect(() => {
+    console.log("quote", quote);
     if (quote) {
-      setTimeout(() => setQuote(null), quote.expirationInSec * 1000);
+      setTimeout(() => {
+        fetchInvoiceById(quote.invoiceId).then(({ state }) => {
+          if (state === "UNPAID") {
+            setQuote(null);
+          } else {
+            handlePayment();
+          }
+        });
+      }, quote.expirationInSec * 1000);
     }
-  }, [quote]);
+  }, [quote, handlePayment]);
 
   return (
     <div
