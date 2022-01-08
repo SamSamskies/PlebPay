@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import QRCode from "qrcode.react";
+import copy from "copy-to-clipboard";
+import toast from "react-simple-toasts";
 import Button from "../Button";
 import createQuote from "../../utils/createQuote";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
@@ -49,27 +51,50 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
   }, [quote]);
 
   return (
-    <div>
-      <h1>{redirectUrl ? `You're in.` : title}</h1>
-      {redirectUrl && (
-        <p>
-          If your browser didn&apos;t redirect you automatically,{" "}
-          <a href={redirectUrl}>click here</a>
-        </p>
-      )}
-      {!quote && (
-        <Button onClick={handleClick} isLoading={isLoading}>
-          Enter for {displayAmount}
-        </Button>
-      )}
+    <div className={styles.root}>
+      <div>
+        <h1>{redirectUrl ? `You're in.` : title}</h1>
+        {redirectUrl && (
+          <p>
+            If your browser didn&apos;t redirect you automatically,{" "}
+            <a href={redirectUrl}>click here</a>
+          </p>
+        )}
+        {!quote && !redirectUrl && (
+          <Button onClick={handleClick} isLoading={isLoading}>
+            Enter for {displayAmount}
+          </Button>
+        )}
+        {quote && (
+          <div className={styles.qrCodeContainer}>
+            <QRCode
+              value={quote.lnInvoice}
+              bgColor="black"
+              fgColor="white"
+              size={192}
+            />
+          </div>
+        )}
+      </div>
       {quote && (
-        <div className={styles.qrCodeContainer}>
-          <QRCode
-            value={quote.lnInvoice}
-            bgColor="black"
-            fgColor="white"
-            size={192}
-          />
+        <div>
+          <p>
+            Alternatively, to copy the Bitcoin Lighting invoice,{" "}
+            <a
+              role="button"
+              href="#"
+              onClick={() => {
+                copy(quote.lnInvoice);
+                toast("Copied");
+              }}
+            >
+              click here.
+            </a>
+          </p>
+          <p>
+            To pay from a Bitcoin wallet,{" "}
+            <a href={`lightning:${quote.lnInvoice}`}>click here.</a>
+          </p>
         </div>
       )}
     </div>
