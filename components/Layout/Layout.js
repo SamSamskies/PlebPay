@@ -24,7 +24,7 @@ export default function Layout({ children }) {
             : null
         }
       >
-        <div style={{ maxWidth: 594 }}>{children}</div>
+        <div>{children}</div>
       </main>
     </div>
   );
