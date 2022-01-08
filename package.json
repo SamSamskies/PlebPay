@@ -16,6 +16,7 @@
     "react-dom": "17.0.2",
     "react-simple-toasts": "^2.2.1",
     "swr": "^1.1.2",
+    "use-local-storage-state": "^13.0.0",
     "uuidv4": "^6.2.12"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import QRCode from "qrcode.react";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
+import useLocalStorageState from "use-local-storage-state";
 import Button from "../Button";
 import Main from "../Main";
 import createQuote from "../../utils/createQuote";
@@ -13,7 +14,7 @@ import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
 export default function Paywall({ title, amount, currency, invoiceId }) {
   const { query } = useRouter();
   const [quote, setQuote] = useState();
-  const [redirectUrl, setRedirectUrl] = useState();
+  const [redirectUrl, setRedirectUrl] = useLocalStorageState(invoiceId);
   const [isLoading, setIsLoading] = useState(false);
   const displayAmount = new Intl.NumberFormat("en", {
     style: "currency",
@@ -39,7 +40,7 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
           setQuote(null);
         });
     }
-  }, [invoiceState, invoiceId]);
+  }, [invoiceState, invoiceId, setRedirectUrl]);
 
   useEffect(() => {
     if (redirectUrl) {
