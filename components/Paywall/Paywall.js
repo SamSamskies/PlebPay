@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import QRCode from "qrcode.react";
+import dynamic from "next/dynamic";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
 import useLocalStorageState from "use-local-storage-state";
@@ -8,6 +8,8 @@ import createQuote from "../../utils/createQuote";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
 import styles from "./Paywall.module.css";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
+
+const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
 
 export default function Paywall({ title, amount, currency, invoiceId }) {
   const [quote, setQuote] = useState();
@@ -73,16 +75,7 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
             Enter for {displayAmount}
           </Button>
         )}
-        {quote && (
-          <div className={styles.qrCodeContainer}>
-            <QRCode
-              value={quote.lnInvoice}
-              bgColor="black"
-              fgColor="white"
-              size={192}
-            />
-          </div>
-        )}
+        {quote && <QRCode data={quote.lnInvoice} />}
       </div>
       {quote && (
         <div>
