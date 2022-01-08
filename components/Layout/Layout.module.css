@@ -2,19 +2,8 @@
   padding: 2rem 6rem;
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  max-width: 594px;
-}
-
 @media (max-width: 768px) {
   .container {
     padding: 0 2rem;
-  }
-
-  .main {
-    max-width: 263px;
-    padding: 2rem 0;
   }
 }

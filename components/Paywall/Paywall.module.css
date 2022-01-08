@@ -1,4 +1,8 @@
 .root {
+  height: 680px;
+}
+
+.contentContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,4 +14,9 @@
   border: 4px solid #ccff00;
   display: inline-block;
   border-radius: 30px;
+}
+
+.bgImage {
+  height: 600px;
+  z-index: 0;
 }
