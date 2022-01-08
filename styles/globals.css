@@ -32,5 +32,11 @@ h1 {
 }
 
 p {
-  line-height: 12px;
+  margin: 0;
+}
+
+@media (min-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
 }

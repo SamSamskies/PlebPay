@@ -5,5 +5,15 @@
 .main {
   min-height: 100vh;
   padding: 4rem 0;
-  width: 594px;
+  max-width: 594px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 4rem;
+  }
+
+  .main {
+    max-width: 263px;
+  }
 }
