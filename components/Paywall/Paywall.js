@@ -48,7 +48,6 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
   }, [redirectUrl]);
 
   useEffect(() => {
-    console.log("quote", quote);
     if (quote) {
       setTimeout(() => {
         fetchInvoiceById(quote.invoiceId).then(({ state }) => {
