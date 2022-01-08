@@ -1,12 +1,8 @@
 .root {
   height: 680px;
-}
-
-.contentContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 600px;
 }
 
 .qrCodeContainer {

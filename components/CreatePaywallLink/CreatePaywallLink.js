@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import Main from "../Main";
 import Button from "../Button";
 import createPaywallLink from "../../utils/createPaywallLink";
 
@@ -29,7 +28,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
   };
 
   return isReady ? (
-    <Main>
+    <div>
       {avatarUrl && (
         <Image src={avatarUrl} alt="user avatar" width="100%" height="100%" />
       )}
@@ -70,6 +69,6 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
           </Link>
         </div>
       )}
-    </Main>
+    </div>
   ) : null;
 }
