@@ -1,5 +1,6 @@
 import Paywall from "../components/Paywall/Paywall";
 import fetchInvoiceById from "../utils/strikeApi/fetchInvoiceById";
+import fetchUserById from "../utils/strikeApi/fetchUserById";
 
 export async function getServerSideProps({ query }) {
   const data = await fetchInvoiceById(query.invoiceId);
@@ -8,16 +9,17 @@ export async function getServerSideProps({ query }) {
     return {};
   }
 
-  const { amount, description, invoiceId } = data;
-  const { title, redirectUrl } = JSON.parse(description);
+  const { amount, description, receiverId } = data;
+  const { title } = JSON.parse(description);
+  const { handle } = await fetchUserById(receiverId);
 
   return {
     props: {
       amount: amount.amount,
       currency: amount.currency,
-      invoiceId,
+      invoiceId: query.invoiceId,
       title,
-      redirectUrl,
+      username: handle,
     },
   };
 }

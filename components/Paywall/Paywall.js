@@ -11,7 +11,13 @@ import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
 
 const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
 
-export default function Paywall({ title, amount, currency, invoiceId }) {
+export default function Paywall({
+  title,
+  amount,
+  currency,
+  invoiceId,
+  username,
+}) {
   const [quote, setQuote] = useState();
   const [redirectUrl, setRedirectUrl] = useLocalStorageState(invoiceId);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +29,9 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
     .replace(/\.00$/, "");
   const handleClick = async () => {
     setIsLoading(true);
-    setQuote(await createQuote(invoiceId));
+    setQuote(
+      await createQuote({ invoiceId, title, amount, currency, username })
+    );
     setIsLoading(false);
   };
   const invoiceState = useInvoiceStatePoller(quote?.invoiceId);

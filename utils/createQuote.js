@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const createQuote = (invoiceId) => {
+const createQuote = (payload) => {
   return axios({
     method: "post",
     url: "/api/quotes/create",
-    data: { invoiceId },
+    data: payload,
   })
     .then(({ data }) => data)
     .catch((error) => {
