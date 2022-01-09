@@ -65,6 +65,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies }) {
           <label>
             Redirect URL{" "}
             <input
+              type="url"
               name="redirectUrl"
               placeholder="https://www.youtube.com/watch?v=wY55CdGx4H0"
               required
