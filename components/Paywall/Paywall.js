@@ -49,10 +49,9 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
   useEffect(() => {
     if (quote) {
       setTimeout(() => {
+        setQuote(null);
         fetchInvoiceById(quote.invoiceId).then(({ state }) => {
-          if (state === "UNPAID") {
-            setQuote(null);
-          } else {
+          if (state !== "UNPAID") {
             handlePayment();
           }
         });
