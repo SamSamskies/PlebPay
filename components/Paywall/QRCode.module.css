@@ -31,4 +31,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: black;
+  border-radius: 30px;
 }

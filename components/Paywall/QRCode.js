@@ -37,7 +37,7 @@ export default function QRCode({ data, animationDuration }) {
             height="236"
             fill="none"
             stroke="black"
-            strokeWidth="4"
+            strokeWidth="6"
             strokeDashoffset={960}
             strokeDasharray={960}
             rx="28"
