@@ -6,6 +6,11 @@
   position: absolute;
 }
 
+.svgBorderContainer svg:nth-child(2) {
+  position: absolute;
+  left: 0;
+}
+
 .svgBorderContainer rect {
   animation-name: dash;
   animation-timing-function: linear;

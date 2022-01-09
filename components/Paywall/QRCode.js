@@ -25,6 +25,19 @@ export default function QRCode({ data, animationDuration }) {
             fill="none"
             stroke="#CCFF00"
             strokeWidth="4"
+            rx="28"
+            style={{ animationDuration: `${animationDuration}s` }}
+          />
+        </svg>
+        <svg width="240px" height="240px" viewBox="0 0 240 240">
+          <rect
+            x="2"
+            y="2"
+            width="236"
+            height="236"
+            fill="none"
+            stroke="black"
+            strokeWidth="4"
             strokeDashoffset={960}
             strokeDasharray={960}
             rx="28"
