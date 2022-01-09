@@ -29,10 +29,13 @@ export default function Paywall({
         return currency;
     }
   };
-  const displayAmount = new Intl.NumberFormat("en", {
-    style: "currency",
-    currency: normalizeCurrency(currency),
-  })
+  const displayAmount = new Intl.NumberFormat(
+    window.navigator.language ?? "en",
+    {
+      style: "currency",
+      currency: normalizeCurrency(currency),
+    }
+  )
     .format(amount)
     .replace(/\.00$/, "");
   const handleClick = async () => {
