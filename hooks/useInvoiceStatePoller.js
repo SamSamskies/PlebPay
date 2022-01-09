@@ -3,7 +3,7 @@ import fetchInvoiceById from "../utils/fetchInvoiceById";
 
 const useInvoiceStatePoller = (invoiceId) => {
   const { data, error } = useSWR(invoiceId, fetchInvoiceById, {
-    refreshInterval: 5000,
+    refreshInterval: 2000,
   });
 
   if (error) {
