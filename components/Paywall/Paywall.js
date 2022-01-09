@@ -21,9 +21,17 @@ export default function Paywall({
   const [quote, setQuote] = useState();
   const [redirectUrl, setRedirectUrl] = useLocalStorageState(invoiceId);
   const [isLoading, setIsLoading] = useState(false);
+  const normalizeCurrency = (currency) => {
+    switch (currency) {
+      case "USDT":
+        return "USD";
+      default:
+        return currency;
+    }
+  };
   const displayAmount = new Intl.NumberFormat("en", {
     style: "currency",
-    currency,
+    currency: normalizeCurrency(currency),
   })
     .format(amount)
     .replace(/\.00$/, "");
