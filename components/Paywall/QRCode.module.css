@@ -11,7 +11,7 @@
   left: 0;
 }
 
-.svgBorderContainer rect {
+.svgBorderContainer svg:nth-child(2) rect {
   animation-name: dash;
   animation-timing-function: linear;
   animation-direction: normal;
