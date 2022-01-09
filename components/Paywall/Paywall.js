@@ -50,6 +50,7 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
     if (quote) {
       setTimeout(() => {
         setQuote(null);
+        toast("Doh! ⚡️ invoice expired.");
         fetchInvoiceById(quote.invoiceId).then(({ state }) => {
           if (state !== "UNPAID") {
             handlePayment();
