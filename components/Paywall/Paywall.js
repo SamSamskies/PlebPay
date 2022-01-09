@@ -48,6 +48,8 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
 
   useEffect(() => {
     if (quote) {
+      const timeBuffer = 3000;
+
       setTimeout(() => {
         setQuote(null);
         toast("Doh! ⚡️ invoice expired.");
@@ -56,7 +58,7 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
             handlePayment();
           }
         });
-      }, quote.expirationInSec * 1000);
+      }, quote.expirationInSec * 1000 - timeBuffer);
     }
   }, [quote, handlePayment]);
 
