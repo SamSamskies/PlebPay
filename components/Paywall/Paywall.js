@@ -75,7 +75,12 @@ export default function Paywall({ title, amount, currency, invoiceId }) {
             Enter for {displayAmount}
           </Button>
         )}
-        {quote && <QRCode data={quote.lnInvoice} />}
+        {quote && (
+          <QRCode
+            data={quote.lnInvoice}
+            animationDuration={quote.expirationInSec}
+          />
+        )}
       </div>
       {quote && (
         <div>
