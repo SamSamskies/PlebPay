@@ -6,7 +6,7 @@ const qrCodeConfig = new QRCodeStyling({
   qrOptions: { typeNumber: "0", mode: "Byte", errorCorrectionLevel: "L" },
   imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 0 },
   dotsOptions: { type: "rounded", color: "#ffffff" },
-  backgroundOptions: { color: "#000000" },
+  backgroundOptions: { color: "#1A1A1A" },
   image: null,
   dotsOptionsHelper: {
     colorType: { single: true, gradient: false },
