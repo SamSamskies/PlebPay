@@ -1,8 +1,8 @@
 import QRCodeStyling from "qr-code-styling";
 
 const qrCodeConfig = new QRCodeStyling({
-  width: 192,
-  height: 192,
+  width: 200,
+  height: 200,
   qrOptions: { typeNumber: "0", mode: "Byte", errorCorrectionLevel: "L" },
   imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 0 },
   dotsOptions: { type: "rounded", color: "#ffffff" },
