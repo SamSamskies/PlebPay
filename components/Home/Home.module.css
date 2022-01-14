@@ -1,0 +1,8 @@
+.root {
+  height: 720px;
+  max-width: 356px;
+}
+
+.root button {
+  margin-top: 32px;
+}
