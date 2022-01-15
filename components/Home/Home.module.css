@@ -6,3 +6,9 @@
 .root button {
   margin-top: 32px;
 }
+
+.githubRibbon {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
