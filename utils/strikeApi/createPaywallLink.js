@@ -1,10 +1,8 @@
 import createInvoice from "./createInvoice";
 
-const createPaywallLink = (payload) => {
+const createPaywallLink = (payload, baseUrl) => {
   return createInvoice(payload)
-    .then(
-      ({ invoiceId }) => `${process.env.BASE_PAYWALL_LINK_URL}/${invoiceId}`
-    )
+    .then(({ invoiceId }) => `${baseUrl}/${invoiceId}`)
     .catch((error) => {
       console.log(error);
     });
