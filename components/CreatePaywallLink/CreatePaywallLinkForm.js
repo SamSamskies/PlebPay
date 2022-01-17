@@ -38,7 +38,7 @@ export default function CreatePaywallLinkForm({ isLoading, onSubmit }) {
         </label>
       </div>
       <div className={styles.buttonContainer}>
-        <Button isLoading={isLoading}>Submit</Button>
+        <Button isLoading={isLoading}>Create Paywall</Button>
       </div>
     </form>
   );
