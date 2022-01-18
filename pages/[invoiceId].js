@@ -6,11 +6,18 @@ export async function getServerSideProps({ query }) {
   const data = await fetchInvoiceById(query.invoiceId);
 
   if (!data) {
-    return {};
+    return { notFound: true };
   }
 
   const { amount, description, receiverId } = data;
-  const { title } = JSON.parse(description);
+  let title;
+
+  try {
+    title = JSON.parse(description).title;
+  } catch (e) {
+    return { notFound: true };
+  }
+
   const { handle } = await fetchUserById(receiverId);
 
   return {
