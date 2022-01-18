@@ -34,7 +34,13 @@ export default function Home() {
       <form onSubmit={handleSubmit}>
         <label>
           Strike Username{" "}
-          <input name="username" placeholder="jack" autoFocus required />
+          <input
+            name="username"
+            placeholder="jack"
+            autoFocus
+            required
+            autoComplete="off"
+          />
         </label>
         <Button isLoading={isLoading}>Let&apos;s Go!</Button>
       </form>
