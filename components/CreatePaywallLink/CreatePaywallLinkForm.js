@@ -1,12 +1,16 @@
 import Button from "../Button";
 import styles from "./CreatePaywallLinkForm.module.css";
 
-export default function CreatePaywallLinkForm({ isLoading, onSubmit }) {
+export default function CreatePaywallLinkForm({
+  currency,
+  isLoading,
+  onSubmit,
+}) {
   return (
     <form onSubmit={onSubmit}>
       <div>
         <label>
-          Amount{" "}
+          {`Amount (${currency})`}
           <input
             type="number"
             name="amount"

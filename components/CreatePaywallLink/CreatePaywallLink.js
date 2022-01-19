@@ -10,6 +10,9 @@ export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
   const { query, isReady } = useRouter();
   const [paywallLink, setPaywallLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const currency = currencies.find(
+    ({ isDefaultCurrency }) => isDefaultCurrency
+  )?.currency;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -18,8 +21,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
     const paywallLink = await createPaywallLink({
       username: query.username,
       title: e.target.title.value,
-      currency: currencies.find(({ isDefaultCurrency }) => isDefaultCurrency)
-        ?.currency,
+      currency,
       amount: e.target.amount.value,
       redirectUrl: e.target.redirectUrl.value,
     });
@@ -45,6 +47,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
           )}
           <h1 className={styles.h1}>{query.username}</h1>
           <CreatePaywallLinkForm
+            currency={currency}
             isLoading={isLoading}
             onSubmit={handleSubmit}
           />
