@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Head from "next/head";
 import styles from "./Home.module.css";
 import Button from "../Button";
 
@@ -15,6 +16,15 @@ export default function Home() {
 
   return (
     <div className={styles.root}>
+      <Head>
+        <meta
+          property="og:title"
+          content="Strike Paywall - Create Bitcoin ⚡️ paywalls for any Strike user"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
+        <meta property="og:url" content="https://strikepaywall.vercel.app/" />
+      </Head>
       <a
         href="https://github.com/SamSamskies/strike-paywall"
         className={styles.githubRibbon}
