@@ -27,7 +27,13 @@ export default function CreatePaywallLinkForm({
       <div>
         <label>
           Title{" "}
-          <input name="title" placeholder="Check out my new video!" required />
+          <input
+            name="title"
+            placeholder="Check out my new video!"
+            pattern="^.{1,70}$"
+            title="Max 70 chars."
+            required
+          />
         </label>
       </div>
       <br />
@@ -38,6 +44,8 @@ export default function CreatePaywallLinkForm({
             type="url"
             name="redirectUrl"
             placeholder="https://www.youtube.com/watch?v=wY55CdGx4H0"
+            pattern="^.{1,150}$"
+            title="Max 150 chars."
             required
           />
         </label>
