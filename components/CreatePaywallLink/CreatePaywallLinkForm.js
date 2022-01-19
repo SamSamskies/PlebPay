@@ -11,6 +11,7 @@ export default function CreatePaywallLinkForm({ isLoading, onSubmit }) {
             type="number"
             name="amount"
             min={0.01}
+            max={100}
             step="0.01"
             placeholder={1}
             autoFocus
