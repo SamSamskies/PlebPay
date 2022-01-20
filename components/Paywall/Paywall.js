@@ -95,9 +95,11 @@ export default function Paywall({
         )}
         {!quote && !redirectUrl && (
           <>
-            <Button onClick={handleClick} isLoading={isLoading}>
-              Enter for {displayAmount}
-            </Button>
+            <div>
+              <Button onClick={handleClick} isLoading={isLoading}>
+                Enter for {displayAmount}
+              </Button>
+            </div>
             <p>
               New to Bitcoin?{" "}
               <a
