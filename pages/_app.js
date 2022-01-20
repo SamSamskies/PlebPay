@@ -1,3 +1,5 @@
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/700.css";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 
