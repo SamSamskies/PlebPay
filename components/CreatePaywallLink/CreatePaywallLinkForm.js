@@ -41,7 +41,6 @@ export default function CreatePaywallLinkForm({
         <label>
           Redirect URL{" "}
           <input
-            type="url"
             name="redirectUrl"
             placeholder="https://www.youtube.com/watch?v=wY55CdGx4H0"
             pattern="^.{1,120}$"
