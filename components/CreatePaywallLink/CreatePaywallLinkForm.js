@@ -17,7 +17,7 @@ export default function CreatePaywallLinkForm({
             min={0.01}
             max={100}
             step="0.01"
-            placeholder={1}
+            placeholder="0.01"
             autoFocus
             required
           />
