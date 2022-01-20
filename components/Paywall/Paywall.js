@@ -61,7 +61,9 @@ export default function Paywall({
 
   useEffect(() => {
     if (redirectUrl) {
-      window.location = redirectUrl;
+      window.location = /^(http(s?)):\/\//i.test(redirectUrl)
+        ? redirectUrl
+        : `//${redirectUrl}`;
     }
   }, [redirectUrl]);
 
