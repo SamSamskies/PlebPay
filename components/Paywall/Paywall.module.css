@@ -25,8 +25,8 @@
   z-index: 0;
 }
 
-@media (max-width: 768px) {
-  .root {
-    max-width: 263px;
+@media (max-width: 480px) {
+  .contentContainer {
+    width: 100%;
   }
 }
