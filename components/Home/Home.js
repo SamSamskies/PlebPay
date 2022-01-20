@@ -19,7 +19,7 @@ export default function Home() {
       <Head>
         <meta
           property="og:title"
-          content="PlebPay - Create a bitcoin lighting paywall and get paid directly to your Strike
+          content="PlebPay - Create a Bitcoin Lighting paywall and get paid directly to your Strike
         account."
         />
         <meta property="og:type" content="website" />
@@ -43,7 +43,7 @@ export default function Home() {
       </a>
       <h1>PlebPay ⚡️</h1>
       <p>
-        Create a bitcoin lighting paywall and get paid directly to your Strike
+        Create a Bitcoin Lighting paywall and get paid directly to your Strike
         account.
       </p>
       <form onSubmit={handleSubmit}>
