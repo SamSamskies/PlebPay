@@ -4,6 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import styles from "./Home.module.css";
 import Button from "../Button";
+import BackgroundBubbles from "../BackgroundBubbles";
 
 export default function Home() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function Home() {
         <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
         <meta property="og:url" content="https://strikepaywall.vercel.app/" />
       </Head>
+      <BackgroundBubbles />
       <a
         href="https://github.com/SamSamskies/strike-paywall"
         className={styles.githubRibbon}

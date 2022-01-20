@@ -1,0 +1,11 @@
+.backgroundBubbles {
+  position: fixed;
+  top: 118px;
+  right: 0;
+}
+
+@media (max-width: 1280px) {
+  .backgroundBubbles {
+    display: none;
+  }
+}
