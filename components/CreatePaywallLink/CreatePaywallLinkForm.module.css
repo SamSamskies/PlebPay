@@ -1,3 +1,12 @@
+.legalLinksContainer {
+  margin-top: 8px;
+}
+
+.legalLinksContainer a {
+  color: #999999;
+  text-decoration: underline;
+}
+
 .buttonContainer {
   margin-top: 64px;
 }

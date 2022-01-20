@@ -49,6 +49,13 @@ export default function CreatePaywallLinkForm({
           />
         </label>
       </div>
+      <p className={styles.legalLinksContainer}>
+        By clicking &quot;Create Paywall,&quot; you agree to our{" "}
+        <a href="https://strike.me/legal/tos/" target="_blank" rel="noreferrer">
+          Terms
+        </a>{" "}
+        and <a href="https://strike.me/legal/privacy/">Privacy Notice</a>.
+      </p>
       <div className={styles.buttonContainer}>
         <Button isLoading={isLoading}>Create Paywall</Button>
       </div>
