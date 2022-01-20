@@ -2,6 +2,10 @@
   max-width: 356px;
 }
 
+.root form {
+  margin-top: 64px;
+}
+
 .root button {
   margin-top: 32px;
 }

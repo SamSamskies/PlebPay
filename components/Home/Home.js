@@ -19,7 +19,8 @@ export default function Home() {
       <Head>
         <meta
           property="og:title"
-          content="PlebPay - Create Bitcoin ⚡️ paywalls for any Strike user"
+          content="PlebPay - Create a bitcoin lighting paywall and get paid directly to your Strike
+        account."
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
@@ -41,6 +42,10 @@ export default function Home() {
         />
       </a>
       <h1>PlebPay ⚡️</h1>
+      <p>
+        Create a bitcoin lighting paywall and get paid directly to your Strike
+        account.
+      </p>
       <form onSubmit={handleSubmit}>
         <label>
           Strike Username{" "}
