@@ -9,6 +9,18 @@
   padding: 16px 48px;
 }
 
+.button:hover {
+  background-color: #e8ff52 !important;
+}
+
+.button:active {
+  background-color: #273300 !important;
+}
+
+.button:disabled {
+  background-color: #4c6600 !important;
+}
+
 @media (max-width: 480px) {
   .button {
     width: 100%;
