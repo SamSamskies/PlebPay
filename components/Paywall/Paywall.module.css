@@ -5,6 +5,17 @@
   max-width: 594px;
 }
 
+.contentContainer {
+  height: 399px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.root button {
+  margin-top: 32px;
+}
+
 .bgImage {
   height: 600px;
   z-index: 0;

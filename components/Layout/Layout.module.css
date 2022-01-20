@@ -8,6 +8,10 @@
 }
 
 @media (max-width: 768px) {
+  .main {
+    margin-top: 150px;
+  }
+
   .main > * {
     margin: 2rem;
   }

@@ -83,8 +83,8 @@ export default function Paywall({
 
   return (
     <div className={styles.root}>
-      <div>
-        <h1>{redirectUrl ? `You're in.` : title}</h1>
+      <h1>{redirectUrl ? `You're in.` : title}</h1>
+      <div className={styles.contentContainer}>
         {redirectUrl && (
           <p>
             If your browser didn&apos;t redirect you automatically,{" "}
@@ -92,9 +92,22 @@ export default function Paywall({
           </p>
         )}
         {!quote && !redirectUrl && (
-          <Button onClick={handleClick} isLoading={isLoading}>
-            Enter for {displayAmount}
-          </Button>
+          <>
+            <Button onClick={handleClick} isLoading={isLoading}>
+              Enter for {displayAmount}
+            </Button>
+            <p>
+              New to Bitcoin?{" "}
+              <a
+                href="https://strike.me/download"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Click here
+              </a>{" "}
+              to download Strike and get started.
+            </p>
+          </>
         )}
         {quote && (
           <QRCode
