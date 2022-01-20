@@ -7,10 +7,10 @@ export default function CreatePaywallLinkForm({
   onSubmit,
 }) {
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.root} onSubmit={onSubmit}>
       <div>
         <label>
-          {`Amount (${currency})`}
+          {`Price (${currency})`}
           <input
             type="number"
             name="amount"
@@ -42,7 +42,7 @@ export default function CreatePaywallLinkForm({
           Redirect URL{" "}
           <input
             name="redirectUrl"
-            placeholder="https://www.youtube.com/watch?v=wY55CdGx4H0"
+            placeholder="example.com"
             pattern="^.{1,120}$"
             title="Max 120 chars."
             required

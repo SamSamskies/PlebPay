@@ -1,14 +1,16 @@
+.root {
+  margin-top: 64px;
+}
+
 .legalLinksContainer {
   margin-top: 8px;
   color: #999999;
 }
 
 .legalLinksContainer a {
-  text-decoration: underline;
   color: #999999;
-  font-weight: bold;
 }
 
 .buttonContainer {
-  margin-top: 64px;
+  margin-top: 32px;
 }

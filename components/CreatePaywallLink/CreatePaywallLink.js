@@ -37,15 +37,30 @@ export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
       )}
       {!error && (
         <>
-          {avatarUrl && (
-            <Image
-              src={avatarUrl}
-              alt="user avatar"
-              width="100%"
-              height="100%"
-            />
-          )}
-          <h1 className={styles.h1}>{query.username}</h1>
+          <div className={styles.usernameContainer}>
+            <div className={styles.avatarContainer}>
+              {avatarUrl && (
+                <Image
+                  src={avatarUrl}
+                  alt="user avatar"
+                  layout="fill"
+                  className={styles.avatar}
+                />
+              )}
+            </div>
+            <h1 className={styles.h1}>{query.username}</h1>
+          </div>
+          <p>
+            Customize your paywall settings. All funds will be converted and
+            credited to{" "}
+            <a
+              href={`https://strike.me/${query.username}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {query.username}
+            </a>
+          </p>
           <CreatePaywallLinkForm
             currency={currency}
             isLoading={isLoading}
