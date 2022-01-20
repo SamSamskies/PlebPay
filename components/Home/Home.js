@@ -57,7 +57,7 @@ export default function Home() {
             autoComplete="off"
           />
         </label>
-        <Button isLoading={isLoading}>Let&apos;s Go!</Button>
+        <Button isLoading={isLoading}>OK</Button>
       </form>
     </div>
   );
