@@ -1,5 +1,4 @@
 .root {
-  height: 680px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
