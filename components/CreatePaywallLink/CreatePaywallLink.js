@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import Link from "next/link";
 import createPaywallLink from "../../utils/createPaywallLink";
 import styles from "./CreatePaywallLink.module.css";
 import CreatePaywallLinkForm from "./CreatePaywallLinkForm";
+import CreatePaywallLinkSuccess from "./CreatePaywallLinkSuccess";
 
 export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
   const { query, isReady } = useRouter();
@@ -35,47 +34,20 @@ export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
       {error?.status === 404 && (
         <h1>Doh! There is no Strike user with username {query.username}.</h1>
       )}
-      {!error && (
-        <>
-          <div className={styles.usernameContainer}>
-            <div className={styles.avatarContainer}>
-              {avatarUrl && (
-                <Image
-                  src={avatarUrl}
-                  alt="user avatar"
-                  layout="fill"
-                  className={styles.avatar}
-                />
-              )}
-            </div>
-            <h1 className={styles.h1}>{query.username}</h1>
-          </div>
-          <p>
-            Customize your paywall settings. All funds will be converted and
-            credited to{" "}
-            <a
-              href={`https://strike.me/${query.username}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {query.username}
-            </a>
-          </p>
-          <CreatePaywallLinkForm
-            currency={currency}
-            isLoading={isLoading}
-            onSubmit={handleSubmit}
-          />
-        </>
+      {!error && !paywallLink && (
+        <CreatePaywallLinkForm
+          avatarUrl={avatarUrl}
+          username={query.username}
+          currency={currency}
+          isLoading={isLoading}
+          onSubmit={handleSubmit}
+        />
       )}
-      <br />
       {paywallLink && (
-        <div>
-          <h2>Paywall Link Created 🎉</h2>
-          <Link href={paywallLink}>
-            <a>{paywallLink}</a>
-          </Link>
-        </div>
+        <CreatePaywallLinkSuccess
+          username={query.username}
+          paywallLink="example.com"
+        />
       )}
     </div>
   ) : null;

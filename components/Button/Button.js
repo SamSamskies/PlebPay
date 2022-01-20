@@ -6,11 +6,12 @@ export default function Button({
   bg = "#CCFF00",
   onClick = () => {},
   isLoading,
+  sx,
 }) {
   return (
     <button
       className={styles.button}
-      style={{ backgroundColor: bg }}
+      style={{ backgroundColor: bg, ...sx }}
       onClick={onClick}
       disabled={isLoading}
     >

@@ -1,0 +1,13 @@
+.root a {
+  color: #cccccc;
+}
+
+.paywallLinkContainer {
+  margin-top: 64px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.paywallLinkContainer input {
+  margin-right: 16px;
+}

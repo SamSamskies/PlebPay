@@ -1,8 +1,12 @@
 import Button from "../Button";
 import styles from "./CreatePaywallLinkForm.module.css";
 import BackgroundBubbles from "../BackgroundBubbles";
+import Image from "next/image";
+import StrikeMeLink from "./StrikeMeLink";
 
 export default function CreatePaywallLinkForm({
+  avatarUrl,
+  username,
   currency,
   isLoading,
   onSubmit,
@@ -10,6 +14,23 @@ export default function CreatePaywallLinkForm({
   return (
     <div className={styles.root}>
       <BackgroundBubbles />
+      <div className={styles.usernameContainer}>
+        <div className={styles.avatarContainer}>
+          {avatarUrl && (
+            <Image
+              src={avatarUrl}
+              alt="user avatar"
+              layout="fill"
+              className={styles.avatar}
+            />
+          )}
+        </div>
+        <h1>{username}</h1>
+      </div>
+      <p>
+        Customize your paywall settings. All funds will be converted and
+        credited to <StrikeMeLink username={username} />
+      </p>
       <form onSubmit={onSubmit}>
         <div>
           <label>
