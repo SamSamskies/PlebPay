@@ -46,7 +46,7 @@ export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
       {paywallLink && (
         <CreatePaywallLinkSuccess
           username={query.username}
-          paywallLink="example.com"
+          paywallLink={paywallLink}
         />
       )}
     </div>
