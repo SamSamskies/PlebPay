@@ -19,7 +19,7 @@ export default function Home() {
       <Head>
         <meta
           property="og:title"
-          content="Strike Paywall - Create Bitcoin ⚡️ paywalls for any Strike user"
+          content="PlebPay - Create Bitcoin ⚡️ paywalls for any Strike user"
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
@@ -40,7 +40,7 @@ export default function Home() {
           data-recalc-dims="1"
         />
       </a>
-      <h1>Strike Paywall</h1>
+      <h1>PlebPay ⚡️</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Strike Username{" "}

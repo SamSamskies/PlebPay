@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <Head>
-        <title>Strike Paywall</title>
+        <title>PlebPay ⚡️</title>
         <meta
           name="description"
           content="Create Bitcoin ⚡️ paywalls for any Strike user"
