@@ -69,7 +69,7 @@ export default function Paywall({
 
   useEffect(() => {
     if (quote) {
-      const timeBuffer = 3000;
+      const timeBuffer = 7000;
 
       setTimeout(() => {
         setQuote(null);
