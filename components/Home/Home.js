@@ -43,24 +43,35 @@ export default function Home() {
           data-recalc-dims="1"
         />
       </a>
-      <h1>PlebPay ⚡️</h1>
-      <p>
-        Create a Bitcoin Lighting paywall and get paid directly to your Strike
-        account.
-      </p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Strike Username{" "}
-          <input
-            name="username"
-            placeholder="jack"
-            autoFocus
-            required
-            autoComplete="off"
-          />
-        </label>
-        <Button isLoading={isLoading}>OK</Button>
-      </form>
+      <div className={styles.contentContainer}>
+        <div className={styles.topContent}>
+          <h1>PlebPay ⚡️</h1>
+          <p>
+            Create a Bitcoin Lighting paywall and get paid directly to your
+            Strike account.
+          </p>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Strike Username{" "}
+              <input
+                name="username"
+                placeholder="jack"
+                autoFocus
+                required
+                autoComplete="off"
+              />
+            </label>
+            <Button isLoading={isLoading}>OK</Button>
+          </form>
+        </div>
+        <p>
+          New to username?{" "}
+          <a href="https://strike.me/download" target="_blank" rel="noreferrer">
+            Click here
+          </a>{" "}
+          to download Strike and get started.
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,3 @@
-.root {
-  max-width: 388px;
-}
-
 .root form {
   margin-top: 64px;
   display: flex;
@@ -17,6 +13,17 @@
   position: fixed;
   top: 0;
   right: 0;
+}
+
+.contentContainer {
+  height: 626px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topContent {
+  max-width: 388px;
 }
 
 @media (max-width: 480px) {
