@@ -66,7 +66,7 @@ export default function CreatePaywallLinkForm({
             Redirect URL{" "}
             <input
               name="redirectUrl"
-              placeholder="example.com"
+              placeholder="https://bit.ly/3nG8cak"
               pattern="^.{1,120}$"
               title="Max 120 chars."
               required
