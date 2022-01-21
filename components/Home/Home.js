@@ -65,7 +65,7 @@ export default function Home() {
           </form>
         </div>
         <p>
-          New to username?{" "}
+          Need a username?{" "}
           <a href="https://strike.me/download" target="_blank" rel="noreferrer">
             Click here
           </a>{" "}
