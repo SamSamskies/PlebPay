@@ -21,7 +21,7 @@ export default function Layout({ children }) {
           query?.previewImageUrl
             ? {
                 backgroundImage: `url("${query.previewImageUrl}")`,
-                backgroundPosition: "center",
+                backgroundPosition: "top center",
                 backgroundRepeat: "no-repeat",
               }
             : null
