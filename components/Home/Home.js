@@ -45,7 +45,7 @@ export default function Home() {
         <div className={styles.topContent}>
           <h1>PlebPay ⚡️</h1>
           <p>
-            Create a Bitcoin Lighting paywall and get paid directly to your
+            Create a Bitcoin Lightning paywall and get paid directly to your
             Strike account.
           </p>
           <form onSubmit={handleSubmit}>
