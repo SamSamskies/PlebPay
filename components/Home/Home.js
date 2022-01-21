@@ -25,7 +25,7 @@ export default function Home() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
-        <meta property="og:url" content="https://strikepaywall.vercel.app/" />
+        <meta property="og:url" content="https://plebpay.com" />
       </Head>
       <BackgroundBubbles />
       <a
