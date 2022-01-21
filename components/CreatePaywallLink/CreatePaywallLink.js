@@ -40,7 +40,10 @@ export default function CreatePaywallLink({
         <h1>Doh! There is no Strike user with username {query.username}.</h1>
       )}
       {!error && !canReceive && (
-        <h1>Doh! {query.username} currently can&apos;t create paywalls.</h1>
+        <h1>
+          Doh! {query.username} currently can&apos;t create paywalls. Strike
+          accounts must be public in order to create paywalls.
+        </h1>
       )}
       {!error && !paywallLink && canReceive && (
         <CreatePaywallLinkForm
