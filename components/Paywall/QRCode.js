@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import qrCodeConfig from "./qrCodeConfig";
 import styles from "./QRCode.module.css";
 
-export default function QRCode({ data, animationDuration }) {
+export default function QRCode({ data, animationDuration, onClick }) {
   const ref = useRef();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function QRCode({ data, animationDuration }) {
   }, [data]);
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} onClick={onClick}>
       <div className={styles.svgBorderContainer}>
         <svg width="240px" height="240px" viewBox="0 0 240 240">
           <rect

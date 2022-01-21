@@ -52,6 +52,12 @@ export default function Paywall({
     setRedirectUrl(JSON.parse(description).redirectUrl);
     setQuote(null);
   }, [invoiceId, setRedirectUrl]);
+  const copyLnInvoiceToClipboard = () => {
+    if (quote?.lnInvoice) {
+      copy(quote.lnInvoice);
+      toast("Copied ⚡️ invoice to clipboard");
+    }
+  };
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
@@ -117,6 +123,7 @@ export default function Paywall({
           <QRCode
             data={quote.lnInvoice}
             animationDuration={quote.expirationInSec}
+            onClick={copyLnInvoiceToClipboard}
           />
         )}
       </div>
@@ -124,14 +131,7 @@ export default function Paywall({
         <div>
           <p>
             Alternatively, to copy the Bitcoin Lighting invoice,{" "}
-            <a
-              role="button"
-              href="#"
-              onClick={() => {
-                copy(quote.lnInvoice);
-                toast("Copied");
-              }}
-            >
+            <a role="button" href="#" onClick={copyLnInvoiceToClipboard}>
               click here.
             </a>
           </p>
