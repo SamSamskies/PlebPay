@@ -14,8 +14,8 @@ export default function QRCode({ data, animationDuration, onClick }) {
   }, [data]);
 
   return (
-    <div className={styles.root} onClick={onClick}>
-      <div className={styles.svgBorderContainer}>
+    <div className={styles.root}>
+      <div className={styles.svgBorderContainer} onClick={onClick}>
         <svg width="240px" height="240px" viewBox="0 0 240 240">
           <rect
             x="2"
