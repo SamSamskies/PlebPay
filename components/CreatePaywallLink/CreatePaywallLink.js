@@ -5,7 +5,11 @@ import styles from "./CreatePaywallLink.module.css";
 import CreatePaywallLinkForm from "./CreatePaywallLinkForm";
 import CreatePaywallLinkSuccess from "./CreatePaywallLinkSuccess";
 
-export default function CreatePaywallLink({ avatarUrl, currencies, error }) {
+export default function CreatePaywallLink({
+  avatarUrl,
+  currencies = [],
+  error,
+}) {
   const { query, isReady } = useRouter();
   const [paywallLink, setPaywallLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
