@@ -82,7 +82,15 @@ export default function CreatePaywallLinkForm({
           >
             Terms
           </a>{" "}
-          and <a href="https://strike.me/legal/privacy/">Privacy Notice</a>.
+          and{" "}
+          <a
+            href="https://strike.me/legal/privacy/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Privacy Notice
+          </a>
+          .
         </p>
         <div className={styles.buttonContainer}>
           <Button isLoading={isLoading}>Create Paywall</Button>
