@@ -9,6 +9,7 @@ export default function CreatePaywallLink({
   avatarUrl,
   currencies = [],
   error,
+  canReceive,
 }) {
   const { query, isReady } = useRouter();
   const [paywallLink, setPaywallLink] = useState();
@@ -38,7 +39,10 @@ export default function CreatePaywallLink({
       {error?.status === 404 && (
         <h1>Doh! There is no Strike user with username {query.username}.</h1>
       )}
-      {!error && !paywallLink && (
+      {!error && !canReceive && (
+        <h1>Doh! {query.username} currently can&apos;t create paywalls.</h1>
+      )}
+      {!error && !paywallLink && canReceive && (
         <CreatePaywallLinkForm
           avatarUrl={avatarUrl}
           username={query.username}
@@ -47,7 +51,7 @@ export default function CreatePaywallLink({
           onSubmit={handleSubmit}
         />
       )}
-      {paywallLink && (
+      {paywallLink && canReceive && (
         <CreatePaywallLinkSuccess
           username={query.username}
           paywallLink={paywallLink}
