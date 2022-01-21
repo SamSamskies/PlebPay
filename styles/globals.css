@@ -19,6 +19,8 @@ a {
 
 p {
   z-index: 1;
+  line-height: 25px;
+  margin: 0;
 }
 
 * {
