@@ -1,6 +1,5 @@
 import Button from "../Button";
 import styles from "./CreatePaywallLinkForm.module.css";
-import BackgroundBubbles from "../BackgroundBubbles";
 import Image from "next/image";
 import StrikeMeLink from "./StrikeMeLink";
 
@@ -13,7 +12,6 @@ export default function CreatePaywallLinkForm({
 }) {
   return (
     <div className={styles.root}>
-      <BackgroundBubbles />
       <div className={styles.usernameContainer}>
         <div className={styles.avatarContainer}>
           {avatarUrl && (

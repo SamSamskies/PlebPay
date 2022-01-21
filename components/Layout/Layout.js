@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./Layout.module.css";
+import BackgroundBubbles from "../BackgroundBubbles";
 
 export default function Layout({ children }) {
   const { query } = useRouter();
@@ -15,6 +16,7 @@ export default function Layout({ children }) {
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
+      {!query?.previewImageUrl && <BackgroundBubbles />}
       <main
         className={styles.main}
         style={
