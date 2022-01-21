@@ -29,7 +29,7 @@ export default function CreatePaywallLinkForm({
       </div>
       <p>
         Customize your paywall settings. All funds will be converted and
-        credited to <StrikeMeLink username={username} />
+        credited to <StrikeMeLink username={username} />.
       </p>
       <form onSubmit={onSubmit}>
         <div>
