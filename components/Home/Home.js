@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Head from "next/head";
 import styles from "./Home.module.css";
 import Button from "../Button";
 
@@ -16,16 +15,6 @@ export default function Home() {
 
   return (
     <div className={styles.root}>
-      <Head>
-        <meta
-          property="og:title"
-          content="PlebPay - Create a Bitcoin Lighting paywall and get paid directly to your Strike
-        account."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
-        <meta property="og:url" content="https://plebpay.com" />
-      </Head>
       <a
         href="https://github.com/SamSamskies/strike-paywall"
         className={styles.githubRibbon}
