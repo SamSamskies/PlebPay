@@ -34,10 +34,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta property="og:title" content="PlebPay ⚡" />
         <meta
-          property="og:description"
-          content="Create a Bitcoin Lightning paywall and get paid directly to your Strike
+          property="og:title"
+          content="PlebPay ⚡ - Create a Bitcoin Lightning paywall and get paid directly to your Strike
         account."
         />
         <meta property="og:type" content="website" />
