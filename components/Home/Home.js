@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "./Home.module.css";
 import Button from "../Button";
+import Head from "next/head";
 
 export default function Home() {
   const router = useRouter();
@@ -15,6 +16,27 @@ export default function Home() {
 
   return (
     <div className={styles.root}>
+      <Head>
+        <meta
+          property="og:title"
+          content="PlebPay ⚡ - Create a Bitcoin Lightning paywall and get paid directly to your Strike
+        account."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
+        <meta property="og:url" content="https://plebpay.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="PlebPay ⚡" />
+        <meta
+          name="twitter:description"
+          content="Create a Bitcoin Lightning paywall and get paid directly to your Strike
+        account."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.plebpay.com/distracted-boyfriend-meme.jpeg"
+        />
+      </Head>
       <a
         href="https://github.com/SamSamskies/strike-paywall"
         className={styles.githubRibbon}
