@@ -17,9 +17,10 @@ export default function Paywall({
   currency,
   invoiceId,
   username,
+  paywallId,
 }) {
   const [quote, setQuote] = useState();
-  const [redirectUrl, setRedirectUrl] = useLocalStorageState(invoiceId);
+  const [redirectUrl, setRedirectUrl] = useLocalStorageState(paywallId);
   const [isLoading, setIsLoading] = useState(false);
   const normalizeCurrency = (currency) => {
     switch (currency) {

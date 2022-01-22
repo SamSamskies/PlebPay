@@ -9,7 +9,7 @@ export async function getServerSideProps({ query }) {
     return { notFound: true };
   }
 
-  const { amount, description, receiverId } = data;
+  const { amount, description, receiverId, paywallId } = data;
   let title;
 
   try {
@@ -27,6 +27,7 @@ export async function getServerSideProps({ query }) {
       invoiceId: query.invoiceId,
       title,
       username: handle,
+      paywallId,
     },
   };
 }
