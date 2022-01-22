@@ -43,9 +43,10 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:image" content="/distracted-boyfriend-meme.jpeg" />
         <meta property="og:url" content="https://plebpay.com" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="PlebPay ⚡" />
         <meta
-          name="twitter:title"
-          content="PlebPay ⚡ - Create a Bitcoin Lightning paywall and get paid directly to your Strike
+          name="twitter:description"
+          content="Create a Bitcoin Lightning paywall and get paid directly to your Strike
         account."
         />
         <meta
