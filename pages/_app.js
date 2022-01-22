@@ -48,7 +48,10 @@ function MyApp({ Component, pageProps }) {
           content="PlebPay ⚡ - Create a Bitcoin Lightning paywall and get paid directly to your Strike
         account."
         />
-        <meta name="twitter:image" content="/distracted-boyfriend-meme.jpeg" />
+        <meta
+          name="twitter:image"
+          content="https://www.plebpay.com/distracted-boyfriend-meme.jpeg"
+        />
       </Head>
       <SafeHydrate>
         <Script
