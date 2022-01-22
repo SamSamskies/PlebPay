@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import * as gtag from "../utils/gtag";
 import Layout from "../components/Layout";
 import "@fontsource/montserrat/400.css";
@@ -34,22 +33,16 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <>
-      {router.pathname !== "/" && (
-        <Head>
-          <meta name="twitter:card" content="summary_large_image" />
-        </Head>
-      )}
-      <SafeHydrate ssr={router.pathname === "/"}>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
-        />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+    <SafeHydrate ssr={router.pathname === "/"}>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -57,13 +50,12 @@ function MyApp({ Component, pageProps }) {
               page_path: window.location.pathname,
             });
           `,
-          }}
-        />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </SafeHydrate>
-    </>
+        }}
+      />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SafeHydrate>
   );
 }
 
