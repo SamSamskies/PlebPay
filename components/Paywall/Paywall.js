@@ -124,7 +124,6 @@ export default function Paywall({
           <QRCode
             data={quote.lnInvoice}
             animationDuration={quote.expirationInSec}
-            onClick={copyLnInvoiceToClipboard}
           />
         )}
       </div>
