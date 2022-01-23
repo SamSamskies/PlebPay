@@ -8,6 +8,11 @@ This is an example of an app that you can build quickly using the [Strike API](h
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Installation
+```bash
+npm install
+```
+
 ### Environment Variables
 For local development, create a file called `.env.local` and add your Strike API key there. Take a look at the `env.local.example` to see required as well as optional env vars.
 
@@ -15,8 +20,6 @@ For local development, create a file called `.env.local` and add your Strike API
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
