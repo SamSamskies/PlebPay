@@ -2,7 +2,7 @@
 
 Create a paywall link for any [Strike](https://strike.me/) user. You specify the amount, title, and redirect URL and that's it. Takes like 10 seconds to create one. Try it out https://plebpay.com.
 
-This is an example of an app that you can build quickly using the [Strike API](https://developer.strike.me).
+PlebPay is an example of an app that you can build quickly using the [Strike API](https://developer.strike.me).
 
 The [plebpay-utils](https://www.npmjs.com/package/plebpay-utils) package can be used to protect a site with a specific PlebPay paywall.
 
