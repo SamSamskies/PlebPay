@@ -4,6 +4,9 @@ Create a paywall link for any [Strike](https://strike.me/) user. You specify the
 
 This is an example of an app that you can build quickly using the [Strike API](https://developer.strike.me).
 
+The [plebpay-utils](https://www.npmjs.com/package/plebpay-utils) package can be used to protect a site with a specific PlebPay paywall.
+
+A simple example of a site protected by a PlebPay paywall https://protected-by-plebpay-example.vercel.app/.
 ## Getting Started with Development
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
