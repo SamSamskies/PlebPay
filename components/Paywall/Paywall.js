@@ -69,9 +69,9 @@ export default function Paywall({
 
   useEffect(() => {
     if (redirectUrl) {
-      addPlebPayRefQueryParam(normalizeUrl(redirectUrl)).then(
-        (result) => (window.location = result)
-      );
+      // addPlebPayRefQueryParam(normalizeUrl(redirectUrl)).then(
+      //   (result) => (window.location = result)
+      // );
     }
   }, [redirectUrl]);
 
