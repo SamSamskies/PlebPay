@@ -8,6 +8,7 @@ import createQuote from "../../utils/createQuote";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
 import styles from "./Paywall.module.css";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
+import { addPlebPayRefQueryParam, normalizeUrl } from "./utils";
 
 const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
 
@@ -68,9 +69,9 @@ export default function Paywall({
 
   useEffect(() => {
     if (redirectUrl) {
-      window.location = /^(http(s?)):\/\//i.test(redirectUrl)
-        ? redirectUrl
-        : `//${redirectUrl}`;
+      addPlebPayRefQueryParam(normalizeUrl(redirectUrl)).then(
+        (result) => (window.location = result)
+      );
     }
   }, [redirectUrl]);
 

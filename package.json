@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^3.3.2",
     "@fontsource/montserrat": "^4.5.2",
     "axios": "^0.24.0",
     "copy-to-clipboard": "^3.3.1",
