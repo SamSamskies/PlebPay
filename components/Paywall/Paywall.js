@@ -8,8 +8,11 @@ import createQuote from "../../utils/createQuote";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
 import styles from "./Paywall.module.css";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
-import { addPlebPayRefQueryParam, normalizeUrl } from "./utils";
 
+const { addPlebPayRefQueryParam, normalizeUrl } = dynamic(
+  () => import("./utils"),
+  { ssr: false }
+);
 const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
 
 export default function Paywall({
@@ -69,9 +72,9 @@ export default function Paywall({
 
   useEffect(() => {
     if (redirectUrl) {
-      // addPlebPayRefQueryParam(normalizeUrl(redirectUrl)).then(
-      //   (result) => (window.location = result)
-      // );
+      addPlebPayRefQueryParam(normalizeUrl(redirectUrl)).then(
+        (result) => (window.location = result)
+      );
     }
   }, [redirectUrl]);
 
