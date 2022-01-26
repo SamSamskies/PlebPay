@@ -7,10 +7,6 @@ export const createPaywallId = (
   return sh.unique(`${invoiceId}${salt}`);
 };
 
-export const createPlebPayRef = (
-  invoiceId,
-  userAgent,
-  salt = process.env.PAYWALL_ID_SALT
-) => {
-  return sh.unique(`${invoiceId}${userAgent}${salt}`);
+export const createPlebPayRef = (invoiceId, userAgent) => {
+  return sh.unique(`${invoiceId}${userAgent}`);
 };
