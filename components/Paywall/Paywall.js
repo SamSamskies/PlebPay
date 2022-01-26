@@ -2,12 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
-import useLocalStorageState from "use-local-storage-state";
 import Button from "../Button";
 import createQuote from "../../utils/createQuote";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
 import styles from "./Paywall.module.css";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
+import { getRedirectUrl } from "../../utils/invoice";
+import verifyPaidPaywall from "../../utils/verifyPaidPaywall";
+import { addPlebPayRefQueryParam, normalizeUrl } from "./utils";
 
 const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
 
@@ -18,9 +20,10 @@ export default function Paywall({
   invoiceId,
   username,
   paywallId,
+  plebPayRef,
 }) {
   const [quote, setQuote] = useState();
-  const [redirectUrl, setRedirectUrl] = useLocalStorageState(paywallId);
+  const [redirectUrl, setRedirectUrl] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const normalizeCurrency = (currency) => {
     switch (currency) {
@@ -48,9 +51,10 @@ export default function Paywall({
   };
   const invoiceState = useInvoiceStatePoller(quote?.invoiceId);
   const handlePayment = useCallback(async () => {
-    const { description } = await fetchInvoiceById(invoiceId);
+    const invoice = await fetchInvoiceById(invoiceId);
+    const redirectUrl = getRedirectUrl(invoice);
 
-    setRedirectUrl(JSON.parse(description).redirectUrl);
+    setRedirectUrl(redirectUrl);
     setQuote(null);
   }, [invoiceId, setRedirectUrl]);
   const copyLnInvoiceToClipboard = () => {
@@ -61,18 +65,35 @@ export default function Paywall({
   };
 
   useEffect(() => {
+    const onLoad = async () => {
+      const possibleRedirectUrl = localStorage.getItem(paywallId);
+
+      if (
+        possibleRedirectUrl &&
+        (await verifyPaidPaywall(invoiceId, possibleRedirectUrl))
+      ) {
+        setRedirectUrl(getRedirectUrl(await fetchInvoiceById(invoiceId)));
+      }
+    };
+
+    onLoad(paywallId);
+  }, [invoiceId, paywallId]);
+
+  useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
       handlePayment();
     }
   }, [invoiceState, handlePayment]);
 
   useEffect(() => {
-    if (redirectUrl) {
-      window.location = /^(http(s?)):\/\//i.test(redirectUrl)
-        ? redirectUrl
-        : `//${redirectUrl}`;
+    if (redirectUrl && paywallId && plebPayRef) {
+      localStorage.setItem(paywallId, redirectUrl);
+      window.location = addPlebPayRefQueryParam(
+        normalizeUrl(redirectUrl),
+        plebPayRef
+      );
     }
-  }, [redirectUrl]);
+  }, [redirectUrl, paywallId, plebPayRef]);
 
   useEffect(() => {
     if (quote) {
