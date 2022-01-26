@@ -77,7 +77,7 @@ export default function Paywall({
     };
 
     onLoad(paywallId);
-  }, []);
+  }, [invoiceId, paywallId]);
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
