@@ -1,20 +1,20 @@
 import Paywall from "../components/Paywall/Paywall";
 import fetchInvoiceById from "../utils/strikeApi/fetchInvoiceById";
 import fetchUserById from "../utils/strikeApi/fetchUserById";
+import { getTitle } from "../utils/invoice";
+import { createPaywallId, createPlebPayRef } from "../utils/hashing";
 
-export async function getServerSideProps({ query }) {
-  const data = await fetchInvoiceById(query.invoiceId);
+export async function getServerSideProps({ query, req }) {
+  const invoice = await fetchInvoiceById(query.invoiceId);
 
-  if (!data) {
+  if (!invoice) {
     return { notFound: true };
   }
 
-  const { amount, description, receiverId, paywallId } = data;
-  let title;
+  const { amount, receiverId } = invoice;
+  const title = getTitle(invoice);
 
-  try {
-    title = JSON.parse(description).title;
-  } catch (e) {
+  if (title === null) {
     return { notFound: true };
   }
 
@@ -27,7 +27,8 @@ export async function getServerSideProps({ query }) {
       invoiceId: query.invoiceId,
       title,
       username: handle,
-      paywallId,
+      paywallId: createPaywallId(query.invoiceId),
+      plebPayRef: createPlebPayRef(req.headers["user-agent"]),
     },
   };
 }
