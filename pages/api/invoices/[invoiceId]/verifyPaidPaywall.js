@@ -9,10 +9,6 @@ export default async function handler(req, res) {
           await fetchInvoiceById(req.query.invoiceId)
         );
 
-        // TODO: remove logging after debugging
-        console.log("redirectUrl", redirectUrl);
-        console.log("req.query.redirectUrl", req.query.redirectUrl);
-
         res.status(200).json(redirectUrl === req.query.redirectUrl);
       } else {
         res.status(403).send("Forbidden");
