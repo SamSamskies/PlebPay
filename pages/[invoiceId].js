@@ -28,7 +28,7 @@ export async function getServerSideProps({ query, req }) {
       title,
       username: handle,
       paywallId: createPaywallId(query.invoiceId),
-      plebPayRef: createPlebPayRef(req.headers["user-agent"]),
+      plebPayRef: createPlebPayRef(query.invoiceId, req.headers["user-agent"]),
     },
   };
 }
