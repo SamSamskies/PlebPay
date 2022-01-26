@@ -1,4 +1,5 @@
 import axios from "axios";
+import createPaywallId from "../createPaywallId";
 
 const fetchInvoiceById = (invoiceId) => {
   return axios({
@@ -8,7 +9,11 @@ const fetchInvoiceById = (invoiceId) => {
       Accept: "application/json",
       Authorization: `Bearer ${process.env.STRIKE_API_KEY}`,
     },
-  }).then(({ data }) => data);
+  })
+    .then(({ data }) => ({ paywallId: createPaywallId(invoiceId), ...data }))
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export default fetchInvoiceById;
