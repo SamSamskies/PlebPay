@@ -67,7 +67,7 @@ export default function Paywall({
       }
     };
 
-    onLoad(paywallId);
+    onLoad();
   }, [invoiceId, paywallId]);
 
   useEffect(() => {
