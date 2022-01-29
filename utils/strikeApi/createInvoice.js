@@ -1,9 +1,7 @@
 import axios from "axios";
-import { uuid } from "uuidv4";
 
 const createInvoice = ({ title, amount, currency, redirectUrl, username }) => {
   const data = {
-    correlationId: uuid(),
     description: redirectUrl ? JSON.stringify({ title, redirectUrl }) : title,
     amount: {
       currency,
