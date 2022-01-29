@@ -66,7 +66,10 @@ export default function Paywall({
 
   useEffect(() => {
     const onLoad = async () => {
-      const possibleRedirectUrl = localStorage.getItem(paywallId);
+      // TODO: remove paywallId check
+      // deprecating use of paywallId as LS key
+      const possibleRedirectUrl =
+        localStorage.getItem(invoiceId) ?? localStorage.getItem(paywallId);
 
       if (
         possibleRedirectUrl &&
@@ -86,14 +89,14 @@ export default function Paywall({
   }, [invoiceState, handlePayment]);
 
   useEffect(() => {
-    if (redirectUrl && paywallId && plebPayRef) {
-      localStorage.setItem(paywallId, redirectUrl);
+    if (redirectUrl && invoiceId && plebPayRef) {
+      localStorage.setItem(invoiceId, redirectUrl);
       window.location = addPlebPayRefQueryParam(
         normalizeUrl(redirectUrl),
         plebPayRef
       );
     }
-  }, [redirectUrl, paywallId, plebPayRef]);
+  }, [redirectUrl, invoiceId, plebPayRef]);
 
   useEffect(() => {
     if (quote) {
