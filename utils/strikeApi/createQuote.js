@@ -9,11 +9,7 @@ const createQuote = (invoiceId) => {
       Accept: "application/json",
       Authorization: `Bearer ${process.env.STRIKE_API_KEY}`,
     },
-  })
-    .then(({ data }) => ({ invoiceId, ...data }))
-    .catch((error) => {
-      console.log(error);
-    });
+  }).then(({ data }) => ({ invoiceId, ...data }));
 };
 
 export default createQuote;

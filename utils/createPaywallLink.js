@@ -5,11 +5,7 @@ const createPaywallLink = (data) => {
     method: "post",
     url: "/api/paywallLinks",
     data,
-  })
-    .then(({ data }) => data)
-    .catch((error) => {
-      console.log(error);
-    });
+  }).then(({ data }) => data);
 };
 
 export default createPaywallLink;
