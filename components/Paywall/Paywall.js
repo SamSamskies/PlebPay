@@ -58,12 +58,13 @@ export default function Paywall({
       // deprecating use of paywallId as LS key
       const possibleRedirectUrl =
         localStorage.getItem(invoiceId) ?? localStorage.getItem(paywallId);
+      const verifiedRedirectUrl = await verifyPaidPaywall(
+        invoiceId,
+        possibleRedirectUrl
+      );
 
-      if (
-        possibleRedirectUrl &&
-        (await verifyPaidPaywall(invoiceId, possibleRedirectUrl))
-      ) {
-        setRedirectUrl(getRedirectUrl(await fetchInvoiceById(invoiceId)));
+      if (verifiedRedirectUrl) {
+        setRedirectUrl(verifiedRedirectUrl);
       }
     };
 

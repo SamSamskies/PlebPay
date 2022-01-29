@@ -9,14 +9,20 @@ export default async function handler(req, res) {
           await fetchInvoiceById(req.query.invoiceId)
         );
 
-        // The JSON.parse check is to provide backwards compatability. We the app was launched, the values
-        // were accidentally be stored as strigified strings.
+        // The JSON.parse check is to provide backwards compatability. When the app was launched, the values
+        // were accidentally being stored as strigified strings.
         try {
           res
             .status(200)
-            .json(redirectUrl === JSON.parse(req.query.redirectUrl));
+            .json(
+              redirectUrl === JSON.parse(req.query.redirectUrl)
+                ? redirectUrl
+                : false
+            );
         } catch (e) {
-          res.status(200).json(redirectUrl === req.query.redirectUrl);
+          res
+            .status(200)
+            .json(redirectUrl === req.query.redirectUrl ? redirectUrl : false);
         }
       } else {
         res.status(403).send("Forbidden");
