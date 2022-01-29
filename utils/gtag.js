@@ -1,4 +1,7 @@
-export const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID;
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+export const GA_MEASUREMENT_ID = publicRuntimeConfig.GA_MEASUREMENT_ID;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url) => {

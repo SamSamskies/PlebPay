@@ -1,11 +1,16 @@
+import React from "react";
 import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import * as gtag from "../utils/gtag";
+import Bugsnag from "../utils/Bugsnag";
+import ErrorView from "../components/ErrorView";
 import Layout from "../components/Layout";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
 import "../styles/globals.css";
+
+const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
 
 function SafeHydrate({ children, ssr }) {
   return ssr ? (
@@ -53,7 +58,9 @@ function MyApp({ Component, pageProps }) {
         }}
       />
       <Layout>
-        <Component {...pageProps} />
+        <ErrorBoundary FallbackComponent={ErrorView}>
+          <Component {...pageProps} />
+        </ErrorBoundary>
       </Layout>
     </SafeHydrate>
   );

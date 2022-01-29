@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bugsnag/js": "^7.16.0",
+    "@bugsnag/plugin-react": "^7.16.0",
     "@fontsource/montserrat": "^4.5.2",
     "axios": "^0.24.0",
     "copy-to-clipboard": "^3.3.1",
