@@ -9,7 +9,7 @@ import styles from "./Paywall.module.css";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
 import { getRedirectUrl } from "../../utils/invoice";
 import verifyPaidPaywall from "../../utils/verifyPaidPaywall";
-import { addPlebPayRefQueryParam, normalizeUrl } from "./utils";
+import { addPlebPayRefQueryParam, formatCurrency, normalizeUrl } from "./utils";
 
 const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
 
@@ -25,23 +25,11 @@ export default function Paywall({
   const [quote, setQuote] = useState();
   const [redirectUrl, setRedirectUrl] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const normalizeCurrency = (currency) => {
-    switch (currency) {
-      case "USDT":
-        return "USD";
-      default:
-        return currency;
-    }
-  };
-  const displayAmount = new Intl.NumberFormat(
-    window.navigator.language ?? "en",
-    {
-      style: "currency",
-      currency: normalizeCurrency(currency),
-    }
-  )
-    .format(amount)
-    .replace(/\.00$/, "");
+  const displayAmount = formatCurrency({
+    amount,
+    currency,
+    locales: window.navigator.language,
+  });
   const handleClick = async () => {
     setIsLoading(true);
     setQuote(
@@ -79,7 +67,7 @@ export default function Paywall({
       }
     };
 
-    onLoad(paywallId);
+    onLoad();
   }, [invoiceId, paywallId]);
 
   useEffect(() => {

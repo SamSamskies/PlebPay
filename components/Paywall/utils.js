@@ -9,3 +9,21 @@ export const addPlebPayRefQueryParam = (redirectUrl, plebPayRef) => {
 
   return urlWithQueryParams.href;
 };
+
+const normalizeCurrency = (currency) => {
+  switch (currency) {
+    case "USDT":
+      return "USD";
+    default:
+      return currency;
+  }
+};
+
+export const formatCurrency = ({ amount, currency, locales = "en" }) => {
+  return new Intl.NumberFormat(locales, {
+    style: "currency",
+    currency: normalizeCurrency(currency),
+  })
+    .format(amount)
+    .replace(/\.00$/, "");
+};
