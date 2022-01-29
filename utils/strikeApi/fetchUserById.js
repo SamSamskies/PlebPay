@@ -8,11 +8,7 @@ const fetchUserById = (userId) => {
       Accept: "application/json",
       Authorization: `Bearer ${process.env.STRIKE_API_KEY}`,
     },
-  })
-    .then(({ data }) => data)
-    .catch((error) => {
-      console.log(error);
-    });
+  }).then(({ data }) => data);
 };
 
 export default fetchUserById;

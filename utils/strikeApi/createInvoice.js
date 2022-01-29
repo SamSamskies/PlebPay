@@ -18,11 +18,7 @@ const createInvoice = ({ title, amount, currency, redirectUrl, username }) => {
       Authorization: `Bearer ${process.env.STRIKE_API_KEY}`,
     },
     data,
-  })
-    .then(({ data }) => data)
-    .catch((error) => {
-      console.log(error);
-    });
+  }).then(({ data }) => data);
 };
 
 export default createInvoice;

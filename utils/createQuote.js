@@ -5,11 +5,7 @@ const createQuote = (payload) => {
     method: "post",
     url: "/api/quotes",
     data: payload,
-  })
-    .then(({ data }) => data)
-    .catch((error) => {
-      console.log(error);
-    });
+  }).then(({ data }) => data);
 };
 
 export default createQuote;
