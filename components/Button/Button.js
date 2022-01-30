@@ -1,4 +1,6 @@
 import { Button as ChakraButton, useBreakpointValue } from "@chakra-ui/react";
+import Color from "color";
+import useGetBrandColor from "../../hooks/useGetBrandColor";
 
 export default function Button({
   children,
@@ -8,6 +10,12 @@ export default function Button({
 }) {
   const isFullWidth =
     useBreakpointValue({ base: true, sm: false }) && isResponsive;
+  const brandColor = useGetBrandColor();
+  let textColor;
+
+  try {
+    textColor = Color(brandColor).isLight() ? "initial" : "white";
+  } catch (e) {}
 
   return (
     <ChakraButton
@@ -15,6 +23,7 @@ export default function Button({
       variant="primary"
       height={14}
       isFullWidth={isFullWidth}
+      color={textColor}
       {...rest}
     >
       {children}
