@@ -2,11 +2,21 @@
 
 Create a paywall link for any [Strike](https://strike.me/) user. You specify the amount, title, and redirect URL and that's it. Takes like 10 seconds to create one. Try it out https://plebpay.com.
 
+You can set a brand color for your paywall by adding a `brandColor` query param to your paywall link. You can use any valid CSS color value. You can also set the value to `bitcoin` which will set the brand color to the Bitcoin orange. 
+
+Here's some examples:
+* https://plebpay.com/ccc2c527-8c1c-4b74-9419-f040f3b61fa8?brandColor=bitcoin
+* https://plebpay.com/2f077162-47ac-4d1c-96ee-7ed2491b76f5?brandColor=865efc 
+* https://plebpay.com/21cbff55-2407-4394-a727-c8ed67dd5ab8?brandColor=deepskyblue
+
+
+
 PlebPay is an example of an app that you can build quickly using the [Strike API](https://developer.strike.me).
 
 The [plebpay-utils](https://www.npmjs.com/package/plebpay-utils) package can be used to protect a site with a specific PlebPay paywall.
 
 A simple example of a site protected by a PlebPay paywall https://protected-by-plebpay-example.vercel.app/.
+
 ## Getting Started with Development
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
