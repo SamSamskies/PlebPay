@@ -1,7 +1,5 @@
+import { Link } from "@chakra-ui/react";
+
 export default function StrikeMeLink({ username }) {
-  return (
-    <a href={`https://strike.me/${username}`} target="_blank" rel="noreferrer">
-      {username}
-    </a>
-  );
+  return <Link href={`https://strike.me/${username}`}>{username}</Link>;
 }

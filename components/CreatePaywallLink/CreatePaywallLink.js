@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { Heading, Box } from "@chakra-ui/react";
 import createPaywallLink from "../../utils/createPaywallLink";
-import styles from "./CreatePaywallLink.module.css";
 import CreatePaywallLinkForm from "./CreatePaywallLinkForm";
 import CreatePaywallLinkSuccess from "./CreatePaywallLinkSuccess";
 
@@ -11,7 +11,7 @@ export default function CreatePaywallLink({
   error,
   canReceive,
 }) {
-  const { query, isReady } = useRouter();
+  const { query } = useRouter();
   const [paywallLink, setPaywallLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const currency = currencies.find(
@@ -34,16 +34,18 @@ export default function CreatePaywallLink({
     setIsLoading(false);
   };
 
-  return isReady ? (
-    <div className={styles.root}>
+  return (
+    <Box maxW={error || !canReceive ? 480 : 388}>
       {error?.status === 404 && (
-        <h1>Doh! There is no Strike user with username {query.username}.</h1>
+        <Heading as="h1" size="2xl">
+          Doh! There is no Strike user with username {query.username}.
+        </Heading>
       )}
       {!error && !canReceive && (
-        <h1>
+        <Heading as="h1" size="2xl">
           Doh! {query.username} currently can&apos;t create paywalls. Strike
           accounts must be public in order to create paywalls.
-        </h1>
+        </Heading>
       )}
       {!error && !paywallLink && canReceive && (
         <CreatePaywallLinkForm
@@ -60,6 +62,6 @@ export default function CreatePaywallLink({
           paywallLink={paywallLink}
         />
       )}
-    </div>
-  ) : null;
+    </Box>
+  );
 }

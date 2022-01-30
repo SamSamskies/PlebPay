@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import qrCodeConfig from "./qrCodeConfig";
 import styles from "./QRCode.module.css";
+import useGetBrandColor from "../../hooks/useGetBrandColor";
 
 export default function QRCode({ data, animationDuration }) {
   const ref = useRef();
+  const brandColor = useGetBrandColor();
 
   useEffect(() => {
     qrCodeConfig.append(ref.current);
@@ -24,7 +26,7 @@ export default function QRCode({ data, animationDuration }) {
               width="236"
               height="236"
               fill="none"
-              stroke="#CCFF00"
+              stroke={brandColor}
               strokeWidth="4"
               rx="28"
             />

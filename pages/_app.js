@@ -2,13 +2,15 @@ import React from "react";
 import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import theme from "../styles/theme";
 import * as gtag from "../utils/gtag";
 import Bugsnag from "../utils/Bugsnag";
 import ErrorView from "../components/ErrorView";
 import Layout from "../components/Layout";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
-import "../styles/globals.css";
+import useGetBrandColor from "../hooks/useGetBrandColor";
 
 const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
 
@@ -24,6 +26,11 @@ function SafeHydrate({ children, ssr }) {
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const brandColor = useGetBrandColor();
+  const themeWithBrand = {
+    ...theme,
+    colors: { ...theme.colors, brand: brandColor },
+  };
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -38,7 +45,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <SafeHydrate ssr={router.pathname === "/"}>
+    <SafeHydrate ssr={false}>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
@@ -57,11 +64,14 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      <Layout>
-        <ErrorBoundary FallbackComponent={ErrorView}>
-          <Component {...pageProps} />
-        </ErrorBoundary>
-      </Layout>
+      <ChakraProvider theme={themeWithBrand}>
+        <CSSReset />
+        <Layout>
+          <ErrorBoundary FallbackComponent={ErrorView}>
+            <Component {...pageProps} />
+          </ErrorBoundary>
+        </Layout>
+      </ChakraProvider>
     </SafeHydrate>
   );
 }

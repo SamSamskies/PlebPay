@@ -2,6 +2,7 @@
   position: fixed;
   top: 118px;
   right: 0;
+  z-index: -1;
 }
 
 @media (max-width: 1280px) {
