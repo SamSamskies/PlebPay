@@ -10,6 +10,7 @@ Bugsnag.start({
     publicRuntimeConfig.BUGSNAG_API_KEY ??
     "No BUGSNAG API key set, but that's okay if you don't want to setup Bugsnag.",
   plugins: [new BugsnagPluginReact(React)],
+  enabledReleaseStages: ["production"],
 });
 
 export default Bugsnag;
