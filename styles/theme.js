@@ -70,7 +70,7 @@ const theme = extendTheme({
   },
   styles: {
     global: {
-      body: {
+      "html,body": {
         background: "black",
         color: "face.secondary",
         minWidth: 380,
