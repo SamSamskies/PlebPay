@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { Box } from "@chakra-ui/react";
 import styles from "./Layout.module.css";
-import BackgroundBubbles from "../BackgroundBubbles";
 
 export default function Layout({ children }) {
   const { query } = useRouter();
 
   return (
-    <div>
+    <>
       <Head>
         <title>PlebPay ⚡️</title>
         <meta
@@ -16,21 +16,33 @@ export default function Layout({ children }) {
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      {!query?.previewImageUrl && <BackgroundBubbles />}
-      <main
-        className={styles.main}
-        style={
+      <Box
+        backgroundImage={
           query?.previewImageUrl
-            ? {
-                backgroundImage: `url("${query.previewImageUrl}")`,
-                backgroundPosition: "top center",
-                backgroundRepeat: "no-repeat",
-              }
-            : null
+            ? ""
+            : { base: "", xl: `url("/background-bubbles.png")` }
         }
+        backgroundPosition="top right"
+        backgroundRepeat="no-repeat"
+        mt={118}
+        h="100%"
+        w="100%"
       >
-        <div>{children}</div>
-      </main>
-    </div>
+        <main
+          className={styles.main}
+          style={
+            query?.previewImageUrl
+              ? {
+                  backgroundImage: `url("${query.previewImageUrl}")`,
+                  backgroundPosition: "top center",
+                  backgroundRepeat: "no-repeat",
+                }
+              : null
+          }
+        >
+          <div>{children}</div>
+        </main>
+      </Box>
+    </>
   );
 }

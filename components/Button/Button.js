@@ -1,21 +1,32 @@
-import LoadingSpinner from "../LoadingSpinner";
-import styles from "./Button.module.css";
+import { Button as ChakraButton, useBreakpointValue } from "@chakra-ui/react";
+import Color from "color";
+import useGetBrandColor from "../../hooks/useGetBrandColor";
 
 export default function Button({
   children,
-  bg = "#CCFF00",
   onClick = () => {},
-  isLoading,
-  sx,
+  isResponsive = true,
+  ...rest
 }) {
+  const isFullWidth =
+    useBreakpointValue({ base: true, sm: false }) && isResponsive;
+  const brandColor = useGetBrandColor();
+  let textColor;
+
+  try {
+    textColor = Color(brandColor).isLight() ? "initial" : "white";
+  } catch (e) {}
+
   return (
-    <button
-      className={styles.button}
-      style={{ backgroundColor: bg, ...sx }}
+    <ChakraButton
       onClick={onClick}
-      disabled={isLoading}
+      variant="primary"
+      height={14}
+      isFullWidth={isFullWidth}
+      color={textColor}
+      {...rest}
     >
-      {isLoading ? <LoadingSpinner /> : children}
-    </button>
+      {children}
+    </ChakraButton>
   );
 }

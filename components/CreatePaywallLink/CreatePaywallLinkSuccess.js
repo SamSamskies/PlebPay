@@ -1,20 +1,23 @@
 import Image from "next/image";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
+import { Heading, Text, HStack } from "@chakra-ui/react";
 import StrikeMeLink from "./StrikeMeLink";
-import styles from "./CreatePaywallLinkSuccess.module.css";
 import IconButton from "../IconButton/IconButton";
+import Input from "../Input";
 
 export default function CreatePaywallLinkSuccess({ username, paywallLink }) {
   return (
-    <div className={styles.root}>
-      <h1>All good 💪</h1>
-      <p>
+    <>
+      <Heading as="h1" size="3xl" mb={4}>
+        All good 💪
+      </Heading>
+      <Text mb={16}>
         Share this link and get paid. All funds will be converted and instantly
         credited to <StrikeMeLink username={username} />.
-      </p>
-      <div className={styles.paywallLinkContainer}>
-        <input value={paywallLink} readOnly />
+      </Text>
+      <HStack spacing={4}>
+        <Input value={paywallLink} readOnly />
         <IconButton
           onClick={() => {
             copy(paywallLink);
@@ -29,7 +32,7 @@ export default function CreatePaywallLinkSuccess({ username, paywallLink }) {
             height={20}
           />
         </IconButton>
-      </div>
-    </div>
+      </HStack>
+    </>
   );
 }

@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
+import { Heading, Text, Link, Box, Flex } from "@chakra-ui/react";
 import Button from "../Button";
 import createQuote from "../../utils/createQuote";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
-import styles from "./Paywall.module.css";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
 import { getRedirectUrl } from "../../utils/invoice";
 import verifyPaidPaywall from "../../utils/verifyPaidPaywall";
@@ -104,33 +104,37 @@ export default function Paywall({
   }, [quote, handlePayment]);
 
   return (
-    <div className={styles.root}>
-      <h1>{redirectUrl ? `You're in.` : title}</h1>
-      <div className={styles.contentContainer}>
+    <Box maxW={594}>
+      <Heading as="h1" size="3xl" mb={4}>
+        {redirectUrl ? `You're in.` : title}
+      </Heading>
+      <Flex direction="column" justifyContent="space-between" height={400}>
         {redirectUrl && (
-          <p>
+          <Text>
             If your browser didn&apos;t redirect you automatically,{" "}
-            <a href={redirectUrl}>click here</a>
-          </p>
+            <Link href={redirectUrl} isExternal variant="brand">
+              click here
+            </Link>
+          </Text>
         )}
         {!quote && !redirectUrl && (
           <>
-            <div>
+            <Box>
               <Button onClick={handleClick} isLoading={isLoading}>
                 Enter for {displayAmount}
               </Button>
-            </div>
-            <p>
+            </Box>
+            <Text>
               New to Bitcoin?{" "}
-              <a
+              <Link
                 href="https://strike.me/download"
-                target="_blank"
-                rel="noreferrer"
+                isExternal
+                variant="brand"
               >
                 Click here
-              </a>{" "}
+              </Link>{" "}
               to download Strike and get started.
-            </p>
+            </Text>
           </>
         )}
         {quote && (
@@ -139,21 +143,28 @@ export default function Paywall({
             animationDuration={quote.expirationInSec}
           />
         )}
-      </div>
+      </Flex>
       {quote && (
-        <div>
-          <p>
+        <Box>
+          <Text>
             Alternatively, to copy the Bitcoin Lighting invoice,{" "}
-            <a role="button" href="#" onClick={copyLnInvoiceToClipboard}>
+            <Link
+              role="button"
+              href="#"
+              onClick={copyLnInvoiceToClipboard}
+              variant="brand"
+            >
               click here.
-            </a>
-          </p>
-          <p>
+            </Link>
+          </Text>
+          <Text>
             To pay from a Bitcoin wallet,{" "}
-            <a href={`lightning:${quote.lnInvoice}`}>click here.</a>
-          </p>
-        </div>
+            <Link href={`lightning:${quote.lnInvoice}`} variant="brand">
+              click here.
+            </Link>
+          </Text>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 }

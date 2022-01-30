@@ -1,6 +1,17 @@
+import {
+  Heading,
+  Text,
+  Box,
+  HStack,
+  VStack,
+  FormControl,
+  FormLabel,
+  Link,
+  Avatar,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import Button from "../Button";
-import styles from "./CreatePaywallLinkForm.module.css";
-import Image from "next/image";
+import Input from "../Input";
 import StrikeMeLink from "./StrikeMeLink";
 
 export default function CreatePaywallLinkForm({
@@ -10,30 +21,28 @@ export default function CreatePaywallLinkForm({
   isLoading,
   onSubmit,
 }) {
+  const avatarSize = useBreakpointValue({ base: "md", sm: "lg" });
+  const usernameSize = useBreakpointValue({ base: "2xl", sm: "3xl" });
+
   return (
-    <div className={styles.root}>
-      <div className={styles.usernameContainer}>
-        <div className={styles.avatarContainer}>
-          {avatarUrl && (
-            <Image
-              src={avatarUrl}
-              alt="user avatar"
-              layout="fill"
-              className={styles.avatar}
-            />
-          )}
-        </div>
-        <h1>{username}</h1>
-      </div>
-      <p>
+    <Box>
+      <HStack space={4} alignItems="flex-end" mb={4}>
+        {avatarUrl && (
+          <Avatar src={avatarUrl} name={username} size={avatarSize} />
+        )}
+        <Heading as="h1" size={usernameSize} mb={4}>
+          {username}
+        </Heading>
+      </HStack>
+      <Text mb={16}>
         Customize your paywall settings. All funds will be converted and
         credited to <StrikeMeLink username={username} />.
-      </p>
+      </Text>
       <form onSubmit={onSubmit}>
-        <div>
-          <label>
-            {`Price (${currency})`}
-            <input
+        <VStack spacing={4} mb={2}>
+          <FormControl>
+            <FormLabel>{`Price (${currency})`}</FormLabel>
+            <Input
               type="number"
               name="amount"
               min={0.01}
@@ -43,57 +52,43 @@ export default function CreatePaywallLinkForm({
               autoFocus
               required
             />
-          </label>
-        </div>
-        <br />
-        <div>
-          <label>
-            Title{" "}
-            <input
+          </FormControl>
+          <FormControl>
+            <FormLabel>Title </FormLabel>
+            <Input
               name="title"
               placeholder="Check out my new video!"
               pattern="^.{1,50}$"
               title="Max 50 chars."
               required
             />
-          </label>
-        </div>
-        <br />
-        <div>
-          <label>
-            Redirect URL{" "}
-            <input
+          </FormControl>
+          <FormControl>
+            <FormLabel>Redirect URL </FormLabel>
+            <Input
               name="redirectUrl"
               placeholder="https://bit.ly/3nG8cak"
               pattern="^.{1,120}$"
               title="Max 120 chars."
               required
             />
-          </label>
-        </div>
-        <p className={styles.legalLinksContainer}>
+          </FormControl>
+        </VStack>
+        <Text fontSize="xs" color="face.tertiary" mb={8}>
           By clicking &quot;Create Paywall,&quot; you agree to our{" "}
-          <a
-            href="https://strike.me/legal/tos/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Link href="https://strike.me/legal/tos/" isExternal>
             Terms
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a
-            href="https://strike.me/legal/privacy/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Link href="https://strike.me/legal/privacy/" isExternal>
             Privacy Notice
-          </a>
+          </Link>
           .
-        </p>
-        <div className={styles.buttonContainer}>
-          <Button isLoading={isLoading}>Create Paywall</Button>
-        </div>
+        </Text>
+        <Button isLoading={isLoading} type="submit">
+          Create Paywall
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 }
