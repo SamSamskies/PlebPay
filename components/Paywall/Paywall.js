@@ -19,7 +19,6 @@ export default function Paywall({
   currency,
   invoiceId,
   username,
-  paywallId,
   plebPayRef,
 }) {
   const [quote, setQuote] = useState();
@@ -54,10 +53,7 @@ export default function Paywall({
 
   useEffect(() => {
     const onLoad = async () => {
-      // TODO: remove paywallId check
-      // deprecating use of paywallId as LS key
-      const possibleRedirectUrl =
-        localStorage.getItem(invoiceId) ?? localStorage.getItem(paywallId);
+      const possibleRedirectUrl = localStorage.getItem(invoiceId);
       const verifiedRedirectUrl = await verifyPaidPaywall(
         invoiceId,
         possibleRedirectUrl
@@ -69,7 +65,7 @@ export default function Paywall({
     };
 
     onLoad();
-  }, [invoiceId, paywallId]);
+  }, [invoiceId]);
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
