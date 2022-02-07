@@ -27,3 +27,9 @@ export const formatCurrency = ({ amount, currency, locales = "en" }) => {
     .format(amount)
     .replace(/\.00$/, "");
 };
+
+export const isProofOfPlebPay = (redirectUrl) =>
+  redirectUrl === "proofofplebpay";
+
+export const makeProofOfPlebPayPath = (invoiceId, paidInvoiceId) =>
+  `/${invoiceId}/paid-invoices/${paidInvoiceId}`;
