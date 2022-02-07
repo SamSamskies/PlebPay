@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
 import { Heading, Text, Link, Box, Flex } from "@chakra-ui/react";
@@ -9,9 +9,16 @@ import fetchInvoiceById from "../../utils/fetchInvoiceById";
 import useInvoiceStatePoller from "../../hooks/useInvoiceStatePoller";
 import { getRedirectUrl } from "../../utils/invoice";
 import verifyPaidPaywall from "../../utils/verifyPaidPaywall";
-import { addPlebPayRefQueryParam, formatCurrency, normalizeUrl } from "./utils";
+import {
+  addPlebPayRefQueryParam,
+  formatCurrency,
+  isProofOfPlebPay,
+  makeProofOfPlebPayPath,
+  normalizeUrl,
+} from "./utils";
+import dynamic from "next/dynamic";
 
-const QRCode = dynamic(() => import("./QRCode"), { ssr: false });
+const QRCode = dynamic(() => import("../QRCode"), { ssr: false });
 
 export default function Paywall({
   title,
@@ -19,10 +26,11 @@ export default function Paywall({
   currency,
   invoiceId,
   username,
-  paywallId,
   plebPayRef,
 }) {
+  const router = useRouter();
   const [quote, setQuote] = useState();
+  const [paidInvoiceId, setPaidInvoiceId] = useState();
   const [redirectUrl, setRedirectUrl] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const displayAmount = formatCurrency({
@@ -38,13 +46,21 @@ export default function Paywall({
     setIsLoading(false);
   };
   const invoiceState = useInvoiceStatePoller(quote?.invoiceId);
-  const handlePayment = useCallback(async () => {
-    const invoice = await fetchInvoiceById(invoiceId);
-    const redirectUrl = getRedirectUrl(invoice);
+  const handlePayment = useCallback(
+    async (paidInvoiceId) => {
+      const invoice = await fetchInvoiceById(invoiceId);
+      const redirectUrl = getRedirectUrl(invoice);
 
-    setRedirectUrl(redirectUrl);
-    setQuote(null);
-  }, [invoiceId, setRedirectUrl]);
+      if (!isProofOfPlebPay(redirectUrl)) {
+        localStorage.setItem(invoiceId, redirectUrl);
+      }
+
+      setRedirectUrl(redirectUrl);
+      setPaidInvoiceId(paidInvoiceId);
+      setQuote(null);
+    },
+    [invoiceId]
+  );
   const copyLnInvoiceToClipboard = () => {
     if (quote?.lnInvoice) {
       copy(quote.lnInvoice);
@@ -54,10 +70,12 @@ export default function Paywall({
 
   useEffect(() => {
     const onLoad = async () => {
-      // TODO: remove paywallId check
-      // deprecating use of paywallId as LS key
-      const possibleRedirectUrl =
-        localStorage.getItem(invoiceId) ?? localStorage.getItem(paywallId);
+      const possibleRedirectUrl = localStorage.getItem(invoiceId);
+
+      if (!possibleRedirectUrl) {
+        return;
+      }
+
       const verifiedRedirectUrl = await verifyPaidPaywall(
         invoiceId,
         possibleRedirectUrl
@@ -69,23 +87,28 @@ export default function Paywall({
     };
 
     onLoad();
-  }, [invoiceId, paywallId]);
+  }, [invoiceId]);
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
-      handlePayment();
+      handlePayment(quote.invoiceId);
     }
-  }, [invoiceState, handlePayment]);
+  }, [invoiceState, handlePayment, quote]);
 
   useEffect(() => {
-    if (redirectUrl && invoiceId && plebPayRef) {
-      localStorage.setItem(invoiceId, redirectUrl);
+    if (!redirectUrl || !invoiceId || !plebPayRef) {
+      return;
+    }
+
+    if (isProofOfPlebPay(redirectUrl) && paidInvoiceId) {
+      router.push(makeProofOfPlebPayPath(invoiceId, paidInvoiceId));
+    } else if (!isProofOfPlebPay(redirectUrl)) {
       window.location = addPlebPayRefQueryParam(
         normalizeUrl(redirectUrl),
         plebPayRef
       );
     }
-  }, [redirectUrl, invoiceId, plebPayRef]);
+  }, [redirectUrl, invoiceId, plebPayRef, paidInvoiceId, router]);
 
   useEffect(() => {
     if (quote) {
@@ -94,11 +117,6 @@ export default function Paywall({
       setTimeout(() => {
         setQuote(null);
         toast("Doh! ⚡️ invoice expired.");
-        fetchInvoiceById(quote.invoiceId).then(({ state }) => {
-          if (state !== "UNPAID") {
-            handlePayment();
-          }
-        });
       }, quote.expirationInSec * 1000 - timeBuffer);
     }
   }, [quote, handlePayment]);

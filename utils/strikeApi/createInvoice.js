@@ -1,8 +1,22 @@
 import axios from "axios";
 
-const createInvoice = ({ title, amount, currency, redirectUrl, username }) => {
+const createInvoice = ({
+  invoiceId,
+  title,
+  amount,
+  currency,
+  redirectUrl,
+  username,
+}) => {
+  const getDescription = () => {
+    if (invoiceId) {
+      return invoiceId;
+    }
+
+    return redirectUrl ? JSON.stringify({ title, redirectUrl }) : title;
+  };
   const data = {
-    description: redirectUrl ? JSON.stringify({ title, redirectUrl }) : title,
+    description: getDescription(),
     amount: {
       currency,
       amount,
