@@ -11,7 +11,7 @@ import Button from "../Button";
 import Input from "../Input";
 import fetchInvoiceById from "../../utils/fetchInvoiceById";
 
-export default function Home({ invoiceId }) {
+export default function Home({ invoiceId, title }) {
   const [isLoading, setIsLoading] = useState(false);
   const [paidInvoice, setPaidInvoice] = useState(null);
   const [error, setError] = useState(null);
@@ -36,8 +36,9 @@ export default function Home({ invoiceId }) {
   return (
     <Box maxW={388}>
       <Heading as="h1" size="3xl" mb={4}>
-        Verify Receipt ID
+        {title}
       </Heading>
+      <Text mb={16}>Verify receipt IDs.</Text>
       <form onSubmit={handleSubmit}>
         <Stack
           alignItems="flex-end"
