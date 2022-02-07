@@ -114,10 +114,12 @@ export default function Paywall({
     if (quote) {
       const timeBuffer = 7000;
 
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         setQuote(null);
         toast("Doh! ⚡️ invoice expired.");
       }, quote.expirationInSec * 1000 - timeBuffer);
+
+      return () => clearTimeout(timeoutId);
     }
   }, [quote, handlePayment]);
 
