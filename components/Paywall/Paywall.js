@@ -25,6 +25,7 @@ export default function Paywall({
   currency,
   invoiceId,
   username,
+  paywallId,
   plebPayRef,
   isProofOfPlebPay,
 }) {
@@ -59,14 +60,14 @@ export default function Paywall({
       const redirectUrl = getRedirectUrl(invoice);
 
       if (!isProofOfPlebPay) {
-        localStorage.setItem(invoiceId, redirectUrl);
+        localStorage.setItem(paywallId, redirectUrl);
       }
 
       setRedirectUrl(redirectUrl);
       setPaidInvoiceId(paidInvoiceId);
       setQuote(null);
     },
-    [invoiceId, isProofOfPlebPay]
+    [invoiceId, isProofOfPlebPay, paywallId]
   );
   const copyLnInvoiceToClipboard = () => {
     if (quote?.lnInvoice) {
@@ -77,7 +78,7 @@ export default function Paywall({
 
   useEffect(() => {
     const onLoad = async () => {
-      const possibleRedirectUrl = localStorage.getItem(invoiceId);
+      const possibleRedirectUrl = localStorage.getItem(paywallId);
 
       if (!possibleRedirectUrl) {
         return;
@@ -94,7 +95,7 @@ export default function Paywall({
     };
 
     onLoad();
-  }, [invoiceId]);
+  }, [invoiceId, paywallId]);
 
   useEffect(() => {
     if (invoiceState && invoiceState !== "UNPAID") {
