@@ -12,7 +12,6 @@ import verifyPaidPaywall from "../../utils/verifyPaidPaywall";
 import {
   addPlebPayRefQueryParam,
   formatCurrency,
-  isProofOfPlebPay,
   makeProofOfPlebPayPath,
   normalizeUrl,
 } from "./utils";
@@ -27,6 +26,7 @@ export default function Paywall({
   invoiceId,
   username,
   plebPayRef,
+  isProofOfPlebPay,
 }) {
   const router = useRouter();
   const [quote, setQuote] = useState();
@@ -41,7 +41,14 @@ export default function Paywall({
   const handleClick = async () => {
     setIsLoading(true);
     setQuote(
-      await createQuote({ invoiceId, title, amount, currency, username })
+      await createQuote({
+        invoiceId,
+        title,
+        amount,
+        currency,
+        username,
+        isProofOfPlebPay,
+      })
     );
     setIsLoading(false);
   };
@@ -51,7 +58,7 @@ export default function Paywall({
       const invoice = await fetchInvoiceById(invoiceId);
       const redirectUrl = getRedirectUrl(invoice);
 
-      if (!isProofOfPlebPay(redirectUrl)) {
+      if (!isProofOfPlebPay) {
         localStorage.setItem(invoiceId, redirectUrl);
       }
 
@@ -59,7 +66,7 @@ export default function Paywall({
       setPaidInvoiceId(paidInvoiceId);
       setQuote(null);
     },
-    [invoiceId]
+    [invoiceId, isProofOfPlebPay]
   );
   const copyLnInvoiceToClipboard = () => {
     if (quote?.lnInvoice) {
@@ -100,15 +107,22 @@ export default function Paywall({
       return;
     }
 
-    if (isProofOfPlebPay(redirectUrl) && paidInvoiceId) {
+    if (isProofOfPlebPay && paidInvoiceId) {
       router.push(makeProofOfPlebPayPath(invoiceId, paidInvoiceId));
-    } else if (!isProofOfPlebPay(redirectUrl)) {
+    } else if (!isProofOfPlebPay) {
       window.location = addPlebPayRefQueryParam(
         normalizeUrl(redirectUrl),
         plebPayRef
       );
     }
-  }, [redirectUrl, invoiceId, plebPayRef, paidInvoiceId, router]);
+  }, [
+    redirectUrl,
+    invoiceId,
+    plebPayRef,
+    paidInvoiceId,
+    router,
+    isProofOfPlebPay,
+  ]);
 
   useEffect(() => {
     if (quote) {
