@@ -1,6 +1,6 @@
 import sh from "shorthash";
 
-export const createPaywallId = (
+export const createSaltedPaywallId = (
   invoiceId,
   salt = process.env.PAYWALL_ID_SALT
 ) => {
