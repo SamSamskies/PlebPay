@@ -7,9 +7,10 @@ const createInvoice = ({
   currency,
   redirectUrl,
   username,
+  isProofOfPlebPay,
 }) => {
   const getDescription = () => {
-    if (invoiceId) {
+    if (isProofOfPlebPay) {
       return invoiceId;
     }
 

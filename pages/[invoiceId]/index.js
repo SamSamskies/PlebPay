@@ -1,7 +1,7 @@
 import Paywall from "../../components/Paywall/Paywall";
 import fetchInvoiceById from "../../utils/strikeApi/fetchInvoiceById";
 import fetchUserById from "../../utils/strikeApi/fetchUserById";
-import { getTitle } from "../../utils/invoice";
+import { getRedirectUrl, getTitle } from "../../utils/invoice";
 import { createPlebPayRef } from "../../utils/hashing";
 
 export async function getServerSideProps({ query, req }) {
@@ -13,8 +13,9 @@ export async function getServerSideProps({ query, req }) {
 
   const { amount, receiverId } = invoice;
   const title = getTitle(invoice);
+  const redirectUrl = getRedirectUrl(invoice);
 
-  if (title === null) {
+  if (title === null || redirectUrl === null) {
     return { notFound: true };
   }
 
@@ -28,6 +29,7 @@ export async function getServerSideProps({ query, req }) {
       title,
       username: handle,
       plebPayRef: createPlebPayRef(query.invoiceId, req.headers["user-agent"]),
+      isProofOfPlebPay: redirectUrl === "proofofplebpay",
     },
   };
 }
