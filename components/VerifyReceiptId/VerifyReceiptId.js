@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Button from "../Button";
 import Input from "../Input";
-import fetchInvoiceById from "../../utils/fetchInvoiceById";
+import fetchInvoiceById from "@utils/fetchInvoiceById";
 
 export default function Home({ invoiceId, title }) {
   const [isLoading, setIsLoading] = useState(false);

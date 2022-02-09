@@ -1,5 +1,5 @@
-import fetchInvoiceById from "../../../../utils/strikeApi/fetchInvoiceById";
-import { getRedirectUrl } from "../../../../utils/invoice";
+import fetchInvoiceById from "@utils/strikeApi/fetchInvoiceById";
+import { getRedirectUrl } from "@utils/invoice";
 
 export default async function handler(req, res) {
   switch (req.method) {

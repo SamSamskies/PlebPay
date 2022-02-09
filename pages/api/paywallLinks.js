@@ -1,4 +1,4 @@
-import createPaywallLink from "../../utils/strikeApi/createPaywallLink";
+import createPaywallLink from "@utils/strikeApi/createPaywallLink";
 
 export default async function handler(req, res) {
   switch (req.method) {
