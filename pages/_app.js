@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
-import theme from "@styles/theme";
-import * as gtag from "@utils/gtag";
-import Bugsnag from "@utils/Bugsnag";
-import ErrorView from "@components/ErrorView";
-import Layout from "@components/Layout";
+import theme from "styles/theme";
+import * as gtag from "utils/gtag";
+import Bugsnag from "utils/Bugsnag";
+import ErrorView from "components/ErrorView";
+import Layout from "components/Layout";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
-import useGetBrandColor from "@hooks/useGetBrandColor";
+import useGetBrandColor from "hooks/useGetBrandColor";
 
 const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
 

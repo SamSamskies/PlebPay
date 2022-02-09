@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { Heading, Box } from "@chakra-ui/react";
-import createPaywallLink from "@utils/createPaywallLink";
+import createPaywallLink from "utils/createPaywallLink";
 import CreatePaywallLinkForm from "./CreatePaywallLinkForm";
 import CreatePaywallLinkSuccess from "./CreatePaywallLinkSuccess";
 

@@ -1,7 +1,7 @@
-import ProofOfPlebPay from "@components/ProofOfPlebPay";
-import fetchInvoiceById from "@utils/strikeApi/fetchInvoiceById";
-import fetchUserById from "@utils/strikeApi/fetchUserById";
-import { getTitle } from "@utils/invoice";
+import ProofOfPlebPay from "components/ProofOfPlebPay";
+import fetchInvoiceById from "utils/strikeApi/fetchInvoiceById";
+import fetchUserById from "utils/strikeApi/fetchUserById";
+import { getTitle } from "utils/invoice";
 
 export async function getServerSideProps({ query }) {
   const invoice = await fetchInvoiceById(query.invoiceId);

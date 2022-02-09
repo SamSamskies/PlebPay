@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import fetchInvoiceById from "@utils/fetchInvoiceById";
+import fetchInvoiceById from "utils/fetchInvoiceById";
 
 const useInvoiceStatePoller = (invoiceId) => {
   const { data, error } = useSWR(invoiceId, fetchInvoiceById, {

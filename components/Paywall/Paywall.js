@@ -4,11 +4,11 @@ import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
 import { Heading, Text, Link, Box, Flex } from "@chakra-ui/react";
 import Button from "../Button";
-import createQuote from "@utils/createQuote";
-import fetchInvoiceById from "@utils/fetchInvoiceById";
-import useInvoiceStatePoller from "@hooks/useInvoiceStatePoller";
-import { getRedirectUrl } from "@utils/invoice";
-import verifyPaidPaywall from "@utils/verifyPaidPaywall";
+import createQuote from "utils/createQuote";
+import fetchInvoiceById from "utils/fetchInvoiceById";
+import useInvoiceStatePoller from "hooks/useInvoiceStatePoller";
+import { getRedirectUrl } from "utils/invoice";
+import verifyPaidPaywall from "utils/verifyPaidPaywall";
 import {
   addPlebPayRefQueryParam,
   formatCurrency,

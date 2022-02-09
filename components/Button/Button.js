@@ -1,6 +1,6 @@
 import { Button as ChakraButton, useBreakpointValue } from "@chakra-ui/react";
 import Color from "color";
-import useGetBrandColor from "@hooks/useGetBrandColor";
+import useGetBrandColor from "hooks/useGetBrandColor";
 
 export default function Button({
   children,
