@@ -1,5 +1,5 @@
-import CreatePaywallLink from "../../components/CreatePaywallLink";
-import fetchUserByHandle from "../../utils/strikeApi/fetchUserByHandle";
+import CreatePaywallLink from "components/CreatePaywallLink";
+import fetchUserByHandle from "utils/strikeApi/fetchUserByHandle";
 
 export async function getServerSideProps({ query }) {
   try {
