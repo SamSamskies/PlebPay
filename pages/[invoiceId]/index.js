@@ -2,7 +2,7 @@ import Paywall from "../../components/Paywall/Paywall";
 import fetchInvoiceById from "../../utils/strikeApi/fetchInvoiceById";
 import fetchUserById from "../../utils/strikeApi/fetchUserById";
 import { getRedirectUrl, getTitle } from "../../utils/invoice";
-import { createPlebPayRef } from "../../utils/hashing";
+import { createPlebPayRef, createSaltedPaywallId } from "../../utils/hashing";
 
 export async function getServerSideProps({ query, req }) {
   const invoice = await fetchInvoiceById(query.invoiceId);
@@ -28,6 +28,7 @@ export async function getServerSideProps({ query, req }) {
       invoiceId: query.invoiceId,
       title,
       username: handle,
+      saltedPaywallId: createSaltedPaywallId(query.invoiceId),
       plebPayRef: createPlebPayRef(query.invoiceId, req.headers["user-agent"]),
       isProofOfPlebPay: redirectUrl === "proofofplebpay",
     },
