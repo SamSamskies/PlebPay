@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import {
   Heading,
   HStack,
@@ -10,11 +9,10 @@ import {
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
 import Image from "next/image";
-import Input from "../Input";
-import IconButton from "../IconButton";
-import StrikeMeLink from "../CreatePaywallLink/StrikeMeLink";
-
-const QRCode = dynamic(() => import("../QRCode"), { ssr: false });
+import Input from "components/Input";
+import IconButton from "components/IconButton";
+import QRCode from "components/QRCode";
+import StrikeMeLink from "components/CreatePaywallLink/StrikeMeLink";
 
 export default function ProofOfPlebPay({ paidInvoiceId, title, username }) {
   return (
