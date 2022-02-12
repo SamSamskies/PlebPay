@@ -1,19 +1,4 @@
-.root {
-  position: relative;
-  margin-top: 16px;
-}
-
-.svgBorderContainer {
-  position: absolute;
-}
-
-.svgBorderContainer svg:nth-child(2) {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.svgBorderContainer svg:nth-child(2) rect {
+.rect {
   animation-name: dash;
   animation-timing-function: linear;
   animation-direction: normal;
@@ -23,16 +8,4 @@
   to {
     stroke-dashoffset: 0;
   }
-}
-
-.qrCodeContainer {
-  box-sizing: border-box;
-  width: 240px;
-  height: 240px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #1a1a1a;
-  border-radius: 30px;
 }

@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import copy from "copy-to-clipboard";
 import toast from "react-simple-toasts";
 import { Heading, Text, Link, Box, Flex } from "@chakra-ui/react";
-import Button from "../Button";
+import Button from "components/Button";
+import QRCode from "components/QRCode";
 import createQuote from "utils/createQuote";
 import fetchInvoiceById from "utils/fetchInvoiceById";
 import useInvoiceStatePoller from "hooks/useInvoiceStatePoller";
@@ -15,9 +16,6 @@ import {
   makeProofOfPlebPayPath,
   normalizeUrl,
 } from "./utils";
-import dynamic from "next/dynamic";
-
-const QRCode = dynamic(() => import("../QRCode"), { ssr: false });
 
 export default function Paywall({
   title,
