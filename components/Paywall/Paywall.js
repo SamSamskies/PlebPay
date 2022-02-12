@@ -138,7 +138,7 @@ export default function Paywall({
 
   return (
     <Box maxW={594}>
-      <Heading as="h1" size="3xl" mb={4}>
+      <Heading as="h1" size="3xl" mb={8}>
         {redirectUrl ? `You're in.` : title}
       </Heading>
       <Flex direction="column" justifyContent="space-between" height={400}>
