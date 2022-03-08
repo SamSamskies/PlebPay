@@ -8,7 +8,7 @@ export default function Custom404() {
         <ul>
           <li>
             <Link
-              href="strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt?amount=69420"
+              href="strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt?amount=6.15"
               isExternal
               variant="brand"
             >
@@ -30,7 +30,7 @@ export default function Custom404() {
       <ul>
         <li>
           <Link
-            href="strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt?amount=69420"
+            href="strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt?amount=6.15"
             isExternal
             variant="brand"
           >
