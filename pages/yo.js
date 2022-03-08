@@ -1,27 +1,27 @@
-import { Link } from "@chakra-ui/react";
+import { Link, Heading, Box } from "@chakra-ui/react";
 
 export default function Custom404() {
   return (
     <div>
-      <h1>Mainnet</h1>
+      <Box my={8}>
+        <Heading>Mainnet</Heading>
+        <Link
+          href="strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt"
+          isExternal
+          variant="brand"
+        >
+          strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt
+        </Link>
+        <Link
+          href="strike:lightning:lnbc1500n1p3z0dpupp5t02jrudxsnrhh0ck5gj0wxnmga6vkvmpu6wx2m7kfnczkxecedsqdpa2fjkzep6ypyx7aeqw3hjqct4w3hk6ct5d93kzmrv0ys82uryv96x2greda6hycqzysxqr23ssp5gu2qqxxxeasqat7kxf2uprusy7yla8zcjjmrfc06degd4hpap2ts9qyyssqhegu8hctx4eg8cnjnjtp05quj6r3q3ga3902wc3ekt76ku2g0murgkjcaqsaczx0upnrc9jhxvea6f7szg9ktd720jy32h89xv3d3rgp7ganr6"
+          isExternal
+          variant="brand"
+        >
+          strike:lightning:lnbc1500n1p3z0dpupp5t02jrudxsnrhh0ck5gj0wxnmga6vkvmpu6wx2m7kfnczkxecedsqdpa2fjkzep6ypyx7aeqw3hjqct4w3hk6ct5d93kzmrv0ys82uryv96x2greda6hycqzysxqr23ssp5gu2qqxxxeasqat7kxf2uprusy7yla8zcjjmrfc06degd4hpap2ts9qyyssqhegu8hctx4eg8cnjnjtp05quj6r3q3ga3902wc3ekt76ku2g0murgkjcaqsaczx0upnrc9jhxvea6f7szg9ktd720jy32h89xv3d3rgp7ganr6
+        </Link>
+      </Box>
 
-      <Link
-        href="strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt"
-        isExternal
-        variant="brand"
-      >
-        strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt
-      </Link>
-      <br />
-      <Link
-        href="strike:lightning:lnbc1500n1p3z0dpupp5t02jrudxsnrhh0ck5gj0wxnmga6vkvmpu6wx2m7kfnczkxecedsqdpa2fjkzep6ypyx7aeqw3hjqct4w3hk6ct5d93kzmrv0ys82uryv96x2greda6hycqzysxqr23ssp5gu2qqxxxeasqat7kxf2uprusy7yla8zcjjmrfc06degd4hpap2ts9qyyssqhegu8hctx4eg8cnjnjtp05quj6r3q3ga3902wc3ekt76ku2g0murgkjcaqsaczx0upnrc9jhxvea6f7szg9ktd720jy32h89xv3d3rgp7ganr6"
-        isExternal
-        variant="brand"
-      >
-        strike:lightning:lnbc1500n1p3z0dpupp5t02jrudxsnrhh0ck5gj0wxnmga6vkvmpu6wx2m7kfnczkxecedsqdpa2fjkzep6ypyx7aeqw3hjqct4w3hk6ct5d93kzmrv0ys82uryv96x2greda6hycqzysxqr23ssp5gu2qqxxxeasqat7kxf2uprusy7yla8zcjjmrfc06degd4hpap2ts9qyyssqhegu8hctx4eg8cnjnjtp05quj6r3q3ga3902wc3ekt76ku2g0murgkjcaqsaczx0upnrc9jhxvea6f7szg9ktd720jy32h89xv3d3rgp7ganr6
-      </Link>
-
-      <h1>Testnet</h1>
+      <Heading>Testnet</Heading>
       <Link
         href="strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt"
         isExternal
