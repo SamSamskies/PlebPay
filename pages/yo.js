@@ -12,7 +12,7 @@ export default function Custom404() {
               isExternal
               variant="brand"
             >
-              strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt
+              strike:bitcoin:bc1q8n477r3dnrdpm5cvz8t7w33trg57ndschkhydt?amount=69420
             </Link>
           </li>
           <li>
@@ -34,7 +34,7 @@ export default function Custom404() {
             isExternal
             variant="brand"
           >
-            strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt
+            strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt?amount=69420
           </Link>
         </li>
         <li>
