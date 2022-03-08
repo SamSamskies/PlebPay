@@ -30,7 +30,7 @@ export default function Custom404() {
       <ul>
         <li>
           <Link
-            href="strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt?amount=69420""
+            href="strike:bitcoin:mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt?amount=69420"
             isExternal
             variant="brand"
           >
