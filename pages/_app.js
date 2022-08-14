@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <SafeHydrate ssr={false}>
+    <SafeHydrate ssr={router.pathname === "/"}>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
