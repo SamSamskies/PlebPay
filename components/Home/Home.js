@@ -20,8 +20,11 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    router.push(`/create/${e.target.username.value}`);
+    window.open(
+      "lightning:lnbc10n1pjf9pl6pp5z4fj5s0sk2g2nnstjusvy2s8mjxpfxpq4kv76u7ecxqmq2lkfrqqdqu2askcmr9wssx7e3q2dshgmmndp5scqzzsxqyz5vqsp5r486eear85sf99fd3waj9nw7890eamzmav3ayrfgrhtwh3fwpm4s9qyyssqzqmyg8pj97cwpcye75hy0j846kn5c4yge7u4rztwpkwqr3k25ffhwcy4nc2kw6g9c39kcgmapcyjk4z8vltzfm5ys9pqdglg2kcfq3sqzzh8dw"
+    );
+    // setIsLoading(true);
+    // router.push(`/create/${e.target.username.value}`);
   };
 
   return (
