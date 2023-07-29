@@ -15,7 +15,7 @@ export default function CreatePaywallLink({
   const [paywallLink, setPaywallLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const currency = currencies.find(
-    ({ isDefaultCurrency }) => isDefaultCurrency
+    ({ isInvoiceable }) => isInvoiceable
   )?.currency;
   const handleSubmit = async (e) => {
     e.preventDefault();
