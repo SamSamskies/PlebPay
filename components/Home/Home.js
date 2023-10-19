@@ -33,7 +33,7 @@ export default function Home() {
         account."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/distracted-boyfriend-meme.jpeg?bustCache=1" />
+        <meta property="og:image" content="https://plebpay.com/distracted-boyfriend-meme.jpeg?bustCache=1" />
         <meta property="og:url" content="https://plebpay.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="PlebPay ⚡" />
@@ -44,7 +44,7 @@ export default function Home() {
         />
         <meta
           name="twitter:image"
-          content="https://www.plebpay.com/distracted-boyfriend-meme.jpeg?bustCache=1"
+          content="https://plebpay.com/distracted-boyfriend-meme.jpeg?bustCache=1"
         />
       </Head>
       <Flex height={626} direction="column" justifyContent="space-between">
