@@ -5,6 +5,12 @@ import createPaywallLink from "utils/createPaywallLink";
 import CreatePaywallLinkForm from "./CreatePaywallLinkForm";
 import CreatePaywallLinkSuccess from "./CreatePaywallLinkSuccess";
 
+const getCurrency = (currencies) => {
+  const normalizedCurrencies = currencies.filter(({ currency, isInvoiceable }) => isInvoiceable && currency !== "BTC");
+
+  return normalizedCurrencies[0]?.currency;
+}
+
 export default function CreatePaywallLink({
   avatarUrl,
   currencies = [],
@@ -14,9 +20,7 @@ export default function CreatePaywallLink({
   const { query } = useRouter();
   const [paywallLink, setPaywallLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const currency = currencies.find(
-    ({ isInvoiceable }) => isInvoiceable
-  )?.currency;
+  const currency = getCurrency(currencies);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -47,7 +51,7 @@ export default function CreatePaywallLink({
           accounts must be public in order to create paywalls.
         </Heading>
       )}
-      {!error && !paywallLink && canReceive && (
+      {!error && !paywallLink && canReceive && currency && (
         <CreatePaywallLinkForm
           avatarUrl={avatarUrl}
           username={query.username}
