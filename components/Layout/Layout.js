@@ -18,21 +18,21 @@ export default function Layout({ children }) {
       </Head>
       <Box
         as="aside"
-        position="fixed"
-        top={0}
-        left={0}
-        right={0}
-        zIndex={1000}
+        w="90%"
+        maxW="520px"
+        mx="auto"
+        mt={4}
         bg="#3d2a00"
-        borderBottom="1px solid"
+        border="1px solid"
         borderColor="#f0a500"
-        px={{ base: 4, md: 6 }}
+        borderRadius="md"
+        px={4}
         py={3}
         textAlign="center"
       >
         <Text
           color="#ffcc66"
-          fontSize={{ base: "sm", md: "md" }}
+          fontSize="sm"
           fontWeight="bold"
           lineHeight="short"
         >
