@@ -1,5 +1,7 @@
 # PlebPay ⚡️
 
+> **⚠️ Deprecated — maintenance mode.** PlebPay is no longer under active development. Existing paywalls will stop working on **October 1, 2026**.
+
 Create a paywall link for any [Strike](https://strike.me/) user. You specify the amount, title, and redirect URL and that's it. Takes like 10 seconds to create one. Try it out https://plebpay.com.
 
 You can set a brand color for your paywall by adding a `brandColor` query param to your paywall link. You can use any valid CSS color value. You can also set the value to `bitcoin` which will set the brand color to the Bitcoin orange. 
