@@ -73,7 +73,6 @@ const theme = extendTheme({
       "html,body": {
         background: "black",
         color: "face.secondary",
-        minWidth: 380,
       },
     },
   },

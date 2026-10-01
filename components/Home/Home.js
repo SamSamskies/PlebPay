@@ -1,106 +1,59 @@
-import { useState } from "react";
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import {
-  Heading,
-  Text,
-  FormControl,
-  FormLabel,
-  Link,
-  Stack,
-  Box,
-  Flex,
-} from "@chakra-ui/react";
-import Button from "../Button";
-import Input from "../Input";
+import { Box, Heading, Link, Text } from "@chakra-ui/react";
 
 export default function Home() {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    router.push(`/create/${e.target.username.value}`);
-  };
-
   return (
-    <>
-      <Head>
-        <meta
-          property="og:title"
-          content="PlebPay ⚡ - Create a Bitcoin Lightning paywall and get paid directly to your Strike
-        account."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://plebpay.com/distracted-boyfriend-meme.jpeg?bustCache=1" />
-        <meta property="og:url" content="https://plebpay.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="PlebPay ⚡" />
-        <meta
-          name="twitter:description"
-          content="Create a Bitcoin Lightning paywall and get paid directly to your Strike
-        account."
-        />
-        <meta
-          name="twitter:image"
-          content="https://plebpay.com/distracted-boyfriend-meme.jpeg?bustCache=1"
-        />
-      </Head>
-      <Flex height={626} direction="column" justifyContent="space-between">
-        <Box maxW={388}>
-          <Heading as="h1" size="3xl" mb={4}>
-            PlebPay ⚡️
-          </Heading>
-          <Text mb={16}>
-            Create a Bitcoin Lightning paywall and get paid directly to your
-            Strike account.
-          </Text>
-          <form onSubmit={handleSubmit}>
-            <Stack
-              alignItems="flex-end"
-              spacing={4}
-              direction={{ base: "column", sm: "row" }}
-            >
-              <FormControl>
-                <FormLabel>Strike Username</FormLabel>
-                <Input
-                  name="username"
-                  placeholder="jack"
-                  autoFocus
-                  required
-                  autoComplete="off"
-                />
-              </FormControl>
-              <Button isLoading={isLoading} type="submit">
-                OK
-              </Button>
-            </Stack>
-          </form>
-        </Box>
-        <Text>
-          Need a username?{" "}
-          <Link href="https://strike.me/download" isExternal variant="brand">
-            Click here
-          </Link>{" "}
-          to download Strike and get started.
-        </Text>
-      </Flex>
-      <a
-        href="https://github.com/SamSamskies/strike-paywall"
-        style={{ position: "fixed", top: 0, right: 0, zIndex: 1001 }}
-        target="_blank"
-        rel="noreferrer"
+    <Box maxW="640px" w="100%">
+      <Text
+        color="brand"
+        fontWeight="bold"
+        fontSize="xl"
+        mb={{ base: 12, md: 20 }}
       >
-        <Image
-          width="149"
-          height="149"
-          src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
-          className="attachment-full size-full"
-          alt="Fork me on GitHub"
-          data-recalc-dims="1"
-        />
-      </a>
-    </>
+        PlebPay <span aria-hidden="true">⚡️</span>
+      </Text>
+      <Heading
+        as="h1"
+        fontSize={{ base: "36px", md: "56px" }}
+        lineHeight="1.15"
+        letterSpacing="-0.04em"
+        mb={6}
+      >
+        This little tool has been retired.
+      </Heading>
+      <Text
+        fontSize={{ base: "md", md: "lg" }}
+        lineHeight="1.8"
+        maxW="540px"
+        mb={5}
+      >
+        PlebPay helped people share their work and get paid over the Lightning
+        network. Thank you to everyone who gave it a try.
+      </Text>
+      <Text fontSize={{ base: "md", md: "lg" }} lineHeight="1.8" maxW="540px">
+        As of October 1, 2026, paywall creation, payments, and receipt
+        verification are no longer available. Existing PlebPay links have been
+        retired too.
+      </Text>
+      <Box
+        mt={{ base: 12, md: 16 }}
+        pt={6}
+        borderTop="1px solid"
+        borderColor="#333333"
+      >
+        <Link
+          href="https://github.com/SamSamskies/strike-paywall"
+          color="brand"
+          fontSize="sm"
+          isExternal
+          _focusVisible={{
+            outline: "2px solid",
+            outlineColor: "brand",
+            outlineOffset: "4px",
+          }}
+        >
+          Explore the source on GitHub
+        </Link>
+      </Box>
+    </Box>
   );
 }
