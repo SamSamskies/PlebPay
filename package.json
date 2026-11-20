@@ -8,8 +8,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@bugsnag/js": "^7.16.0",
-    "@bugsnag/plugin-react": "^7.16.0",
     "@chakra-ui/react": "^1.8.1",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
